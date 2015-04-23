@@ -1,0 +1,6 @@
+-content_for :title do
+  | Добавить продукт
+-content_for :action do
+  = link_to 'Назад', staff_products_path, class: 'btn btn-default'
+
+= render 'form'

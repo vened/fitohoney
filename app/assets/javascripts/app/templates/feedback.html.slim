@@ -1,0 +1,39 @@
+div ng-controller="FeedbackController"
+  div ng-if="success"
+    .alert.alert-success
+      strong Ваше сообщение успешно отправлено!
+    span.btn.btn-default ng-click="reload()" Отправить ещё
+  .alert.alert-danger ng-if="errors"
+    div style="margin: 0 0 10px"
+      strong При сохранении формы возникли следующие ошибки:
+    div ng-if="errors['name']" style="margin: 0 0 5px"
+      strong Имя 
+      | {{errors['name'][0]}}
+    div ng-if="errors['phone']" style="margin: 0 0 5px"
+      strong Телефон 
+      | {{errors['phone'][0]}}
+    div ng-if="errors['email']" style="margin: 0 0 5px"
+      strong E-mail 
+      | {{errors['email'][0]}}
+    div ng-if="errors['note']" style="margin: 0 0 5px"
+      strong Сообщение 
+      | {{errors['note'][0]}}
+
+  form name="feedback_form" ng-submit="submit(feedback)" ng-hide="success"
+    .row
+      .col-md-4.col-sm-4.col-xs-4.col-lg-4
+        .form-group
+          label for="name" Имя
+          input.form-control type="text" name="name" ng-model="feedback.name"
+      .col-md-4.col-sm-4.col-xs-4.col-lg-4
+        .form-group
+          label for="phone" Телефон
+          input.form-control type="text" name="phone" ng-model="feedback.phone"
+      .col-md-4.col-sm-4.col-xs-4.col-lg-4
+        .form-group
+          label for="email" E-mail
+          input.form-control type="email" name="email" ng-model="feedback.email"
+    .form-group
+      label for="note" Сообщение
+      textarea.form-control name="note" ng-model="feedback.note"
+    input.btn.btn-primary type="submit" value="Отправить" 

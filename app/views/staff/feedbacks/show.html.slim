@@ -1,0 +1,15 @@
+-content_for :title do
+  =@feedback.title
+-content_for :action do
+  = link_to 'Назад', staff_feedbacks_path, class: 'btn btn-default'
+  | &nbsp;
+  = link_to 'Редактировать', edit_staff_feedback_path(@feedback), class: 'btn btn-success'
+  = link_to staff_feedback_path(@feedback), data: {:confirm => 'Вы уверенный?'}, :method => :delete, class: 'btn btn-danger' do
+    .fa.fa-trash
+
+.row
+  .col-md-3=image_tag @feedback.photo.large, class: "img-responsive"
+  .col-md-8
+    = raw @feedback.prev
+    hr
+    = raw @feedback.body

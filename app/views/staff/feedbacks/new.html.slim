@@ -1,0 +1,6 @@
+-content_for :title do
+  | Добавить отзыв
+-content_for :action do
+  = link_to 'Назад', staff_feedbacks_path, class: 'btn btn-default'
+
+== render 'form'

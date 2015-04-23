@@ -1,0 +1,21 @@
+doctype html
+html lang="en" ng-app="app"
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    title
+      | Staff
+      | &nbsp;
+      = yield :title
+    = csrf_meta_tags
+    = stylesheet_link_tag 'staff/application', media: 'all'
+    = javascript_include_tag 'staff/application'
+  body
+    = render 'staff/shared/header'
+    .container-fluid
+      .row
+        = notice
+        = alert
+        = render 'staff/shared/sidebar'
+        = render 'staff/shared/content'

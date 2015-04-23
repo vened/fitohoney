@@ -1,0 +1,8 @@
+-content_for :title do
+  | Редактирование 
+  | —
+  =@category.title
+-content_for :action do
+  = link_to 'Назад', staff_category_path, class: 'btn btn-default'
+
+== render 'form'

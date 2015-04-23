@@ -1,0 +1,21 @@
+<div class="form-signin">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h2 class="form-signin-heading">Вход в Staff</h2>
+
+      <%= f.label :email, class: 'sr-only' %>
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      <%= f.label :password, class: 'sr-only' %>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+
+      <% if devise_mapping.rememberable? -%>
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :remember_me %>
+              Запомнить меня
+            </label>
+          </div>
+      <% end -%>
+      <%= f.submit "Войти", class: 'btn btn-lg btn-primary btn-block' %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

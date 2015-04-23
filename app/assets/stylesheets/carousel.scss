@@ -1,0 +1,85 @@
+.slider-container{
+	margin-top: -39px;
+	padding: 40px 0 55px;
+	background: image-url('bg_pattern_1.png');
+}
+.carousel{
+    border: 6px solid #fff;
+}
+.carousel-caption{
+    bottom: 10px;
+    background: rgba(68, 35, 0, 0.35);
+    
+    h2{
+        margin-top: 0;
+    }
+}
+.carousel-control{
+    cursor: pointer;
+
+	.icon-right-open-big,
+    .icon-left-open-big{
+        position: absolute;
+        top: 41%;
+		font-size: 40px;
+    }
+    .icon-left-open-big{
+        left: 20px;
+    }
+	.icon-right-open-big{
+        right: 20px;
+    }
+}
+
+.carousel-indicators{
+    bottom: 15px;
+    margin-bottom: 0;
+}
+.slider{
+	position: relative;
+
+	&:after{
+		content: '';
+		position: absolute;
+		left: -51px;
+		top: 0;
+		height: 100%;
+		width: 50px;
+		background: image-url('icons_bg.png') no-repeat 0 0;
+		background-size: cover;
+	}
+
+	&:before{
+		content: '';
+		position: absolute;
+		right: -51px;
+		top: 0;
+		height: 100%;
+		width: 50px;
+		background: image-url('icons_bg.png') no-repeat right top;
+		background-size: cover;
+	}
+}
+.carousel{
+	&:after{
+		content: '';
+		position: absolute;
+		left: 0;
+		top: -35px;
+		height: 28px;
+		width: 100%;
+		background: image-url('icons_bg.png') no-repeat center top;
+		background-size: cover;
+	}
+
+	&:before{
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -57px;
+		height: 50px;
+		width: 100%;
+		background: image-url('icons_bg.png') no-repeat center bottom;
+		background-size: cover;
+	}
+}

@@ -1,0 +1,21 @@
+.product_cell
+  =link_to product.full_path, class: 'product_cell__image' do
+    =image_tag product.product_photos.first.photo.thumb, class: 'image'
+  =link_to product.full_path, class: 'product_cell__title'
+    .title=product.title
+  .product-cell__content
+    .product-cell__price
+      =number_to_currency(product.price, locale: :ru)
+    .product-cell__properties
+      dl.product-cell__property
+        dt Страна:
+        dd=product.properties.find_by(name: 'Страна').value
+      dl.product-cell__property
+        dt Размеры:
+        dd
+          =product.properties.find_by(name: 'Ширина').value
+          | x
+          =product.properties.find_by(name: 'Высота').value
+      
+  .product-cell__footer
+    .btn.btn-primary.btn-block Купить

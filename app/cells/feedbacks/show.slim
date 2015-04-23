@@ -1,0 +1,6 @@
+.block.feedback:.container
+  h3 Отзывы
+  .row
+    -@feedbacks.each do |item|
+      .col-xs-12.col-sm-6.col-md-3
+        = render partial: "../views/shared/feedback", locals: {item: item}

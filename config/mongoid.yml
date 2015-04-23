@@ -1,0 +1,21 @@
+development:
+  sessions:
+    default:
+      database: santemax_development
+      hosts:
+        - localhost:27017
+      options:
+  options:
+    raise_not_found_error: false
+test:
+  sessions:
+    default:
+      database: santemax_test
+      hosts:
+        - localhost:27017
+      options:
+        read: primary
+        max_retries: 1
+        retry_interval: 0
+  options:
+    raise_not_found_error: false

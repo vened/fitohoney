@@ -1,0 +1,11 @@
+.product-filters
+  checkbox-filter [
+    ng-repeat="filter in filters track by $index"
+    ng-init="params.filter[$index]['name'] = filter._id; params.filter[$index]['value'] = []; currentIndex = $index; params.category_id = '#{category.id}'"
+    ]
+
+
+.form-group
+  button.btn.btn-default.btn-block.btn-sm ng-click="searchStart(params)" Фильтровать
+.form-group.text-center
+  span.dotted ng-click="resetFilter()" Сбросить фильтр

@@ -1,0 +1,31 @@
+div ng-controller="PropertiesController" ng-init="allProperty('#{@product.id}')"
+  h2 Атрибуты продукта:
+  table.table.table-bordered
+    thead
+      tr
+        th Атрибут
+        th Единица измерения
+        th Значение
+        th
+    tbody
+      tr ng-repeat="property in properties"
+        td
+          | {{property.name}}
+        td
+          | {{property.size}}
+        td
+          | {{property.value}}
+        td
+          span.btn.btn-danger.btn-sm ng-click="destroyProperty(property._id['$oid'], '#{@product.id}')"
+            | Удалить
+
+  form ng-show="propertyForm" ng-init="property.product_id = '#{@product.id}'"
+    .form-group
+      input.form-control type="text" placeholder="Название аттрибута" ng-model="property.name"
+    .form-group
+      input.form-control type="text" placeholder="Единица измерения аттрибута" ng-model="property.size"
+    .form-group
+      input.form-control type="text" placeholder="Значение" ng-model="property.value"
+  .form-group
+    span.btn.btn-success.btn-sm ng-click="createProperty(property, '#{@product.id}')" ng-show="propertyForm" Сохранить атрибут
+    span.btn.btn-primary.btn-sm ng-click="newProperty()" ng-hide="propertyForm" Добавить атрибут

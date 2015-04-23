@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading 
+    h2.panel-title.text-center Популярные товары
+  .panel-body
+    .row
+      -@products.each do |item|
+        .col-md-3.product
+          = render partial: "../views/shared/product", locals: {product: item, category: item.category}
+
+/.panel.panel-success
+  .panel-heading
+    h2.panel-title.text-center Новинки
+  .panel-body
+    .row
+      -@products2.each do |item|
+        .col-md-3.product
+          = render partial: "../views/shared/product", locals: {product: item, category: item.category}

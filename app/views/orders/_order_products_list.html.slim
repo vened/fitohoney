@@ -1,0 +1,53 @@
+.panel.panel-default
+  .panel-heading.products-table-heading
+    .row
+      .col-xs-3.col-sm-3.col-md-6.text-center Товар
+      .col-xs-3.col-sm-3.col-md-2.text-center Стоимость
+      .col-xs-3.col-sm-3.col-md-2.text-center Кол-во
+      .col-xs-3.col-sm-3.col-md-2.text-center Итого
+  table.table.products-table
+    tbody
+      tr ng-repeat="item in cartItems.order_items"
+        td.col-md-2
+          div style="width:130px"
+            a href="/products/{{item.product_id}}"
+              img.img-responsive ng-src="{{item.photo}}"
+        td.col-md-4
+          h4
+            a href="/products/{{item.product_id}}"
+              | {{item.title}}
+        td.col-md-2.text-center
+          strong.cart-price
+            | {{item.origin_price}}
+            | &nbsp;
+            i class="fa fa-rub"
+        td.col-md-2.text-center
+          .btn-group.btn-group-justified
+            .btn-group
+              .btn.btn-primary ng-click="addOrder(item.product_id, item.count - 1)"
+                i.icon-minus
+            .btn-group
+              .btn.btn-default.disabled
+                | {{item.count}}
+            .btn-group
+              .btn.btn-primary ng-click="addOrder(item.product_id, item.count + 1)"
+                i.icon-plus
+          br
+          .btn.btn-danger.btn-sm ng-click="productDestroy(item._id.$oid, item.product_id)" Убрать из корзины
+        td.col-md-2.text-center
+          strong.cart-price  
+            | {{item.price}}
+            | &nbsp;
+            i class="fa fa-rub"
+
+  .panel-footer
+    .row
+      .col-xs-8.col-sm-8.col-md-8
+        .cart-price-all
+          | Сумма заказа: 
+          strong
+            | {{cartItems.price}}
+            | &nbsp;
+            i class="fa fa-rub"
+      .col-xs-4.col-sm-4.col-md-4.text-right
+        span.btn.btn-success.btn-lg ng-click="gotoOrderConfirm('OrderConfirm')" ng-hide="OrderConfirm" Оформить заказ

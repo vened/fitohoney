@@ -1,0 +1,33 @@
+-content_for :title do
+  | Купить #{@product.title}
+
+-content_for :breadcrumb do
+  ol.breadcrumb
+    li=link_to 'Главная', root_path
+    li=link_to 'Наши продукты', catalog_path
+    li.active= @product.title
+
+.container.content-page
+  .row.product-page.photo-gallery itemscope="" itemtype="http://schema.org/Product"
+  
+    .col-md-5
+      -if @root_photo.present?
+        =link_to("#{@root_photo.photo.large.url}", class: "insert-img ", title: @product.title) do
+          =image_tag @root_photo.photo.large.url, itemprop: "image", class: "img-responsive"
+      .row
+        -@product.product_photos.each do |photo|
+          .col-xs-6.col-sm-4.col-md-3.product-photos-item
+            =link_to("#{photo.photo}", class: "insert-img", title: @product.title) do
+              =image_tag photo.photo.thumb, class: "img-responsive"
+  
+  
+    .col-md-7
+      h1 itemprop="name"= @product.title
+      -if @product.price
+        dl.product-property.price itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"
+          dt Цена:
+          dd=number_to_currency(@product.price, locale: :ru)
+          meta itemprop="price" content="#{@product.price}"
+          meta itemprop="priceCurrency" content="RUB"
+      .btn.btn-success.btn-lg ng-click="addOrder('#{@product.id}', 1)" Купить
+      .product_description itemprop="description"=@product.description

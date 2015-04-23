@@ -1,0 +1,22 @@
+= form_for [:staff, @feedback] do |f|
+  - if @feedback.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@feedback.errors.count, "error")} prohibited this product from being saved:"
+      ul
+        - @feedback.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :title, 'Название'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :prev, 'Первью отзыва'
+    = f.text_area :prev, class: 'form-control'
+  .form-group
+    = f.label :body, 'Отзыв'
+    = f.text_area :body, class: 'form-control editor', style: 'height: 350px'
+  .form-group
+    = f.label :photo, 'Фото'
+    = f.file_field :photo
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-success'

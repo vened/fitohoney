@@ -1,0 +1,26 @@
+-content_for :title do
+  | Отзывы
+-content_for :action do
+  = link_to 'Добавить новый отзыв', new_staff_feedback_path, class: 'btn btn-success'
+
+
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th Название
+      th Фото
+      th Отзыв
+      th Действия
+  tbody
+    - @feedbacks.each do |item|
+      tr
+        td= item.title
+        td=image_tag item.photo.large, class: "img-responsive"
+        td= raw item.prev
+        td.text-nowrap
+          = link_to staff_feedback_path(item), class: 'btn btn-info btn-sm' do
+            .fa.fa-info
+          = link_to edit_staff_feedback_path(item), class: 'btn btn-success btn-sm' do
+            .fa.fa-edit
+          = link_to staff_feedback_path(item), data: {:confirm => 'Вы уверенны?'}, :method => :delete, class: 'btn btn-danger btn-sm' do
+            .fa.fa-trash

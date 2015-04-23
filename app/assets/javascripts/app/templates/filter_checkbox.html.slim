@@ -1,0 +1,19 @@
+.filter-block ng-class="{open : currentIndex == 0}"
+  .filter-block__header
+    .title 
+      | {{filter._id}}
+  .filter-block__body
+    .filter-block__list
+      .filter-block__item ng-repeat="value in filter.values"
+        .checkbox__box__container
+          span.checkbox__box
+            input.checkbox__control [
+                type="checkbox" 
+                id="{{filter._id[$index]}}"
+                ng-model="params.filter[currentIndex]['value']"
+                ng-change="selectedFilter(value)"
+                ng-true-value="{{value}}"
+                ng-false-value=""
+              ]
+            i.checkbox__tick
+          label.checkbox__label for="{{filter._id[$index]}}" {{value}}

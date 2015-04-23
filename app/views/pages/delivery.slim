@@ -1,0 +1,11 @@
+- content_for :title do
+    | Доставка и оплата
+
+- content_for :breadcrumb do
+  ol.breadcrumb
+    li= link_to 'Главная', root_path
+    li.active Доставка и оплата
+
+.container
+  h1.page-header Доставка и оплата
+  = render 'shared/delivery'

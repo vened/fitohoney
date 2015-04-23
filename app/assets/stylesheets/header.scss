@@ -1,0 +1,43 @@
+.navbar-brand{
+	padding: 5px 15px;
+
+	img{
+		width: 93px;
+	}
+}
+.navbar-inverse .navbar-nav > li > a{
+	&:focus,
+	&:hover{
+		background-color: rgba(0, 0, 0, .3);
+	}
+}
+.navbar{
+	color: $navbar-inverse-link-hover-color;
+
+	.phone{
+		padding-top: 17px;
+		margin-right: 25px;
+		font-size: 22px;
+	}
+	.navbar-collapse{
+		&.in{
+			.phone{
+				display: none;
+			}
+		}
+	}
+}
+.shopping-cart-container{
+    padding: 16px 0 0 10px;
+}
+.shopping-cart{
+    display: inline-block;
+	padding: 6px 12px !important;
+	color: $btn-warning-color !important;
+	
+	.icon-basket-1{
+		margin-right: 5px;
+		font-size: 18px;
+		line-height: 15px;
+	}
+}

@@ -1,0 +1,13 @@
+-content_for :title do
+  | Заказы
+
+
+.panel.panel-primary
+  .panel-heading
+    .panel-title Не обработанные
+  = render partial: "staff/orders/orders", locals: {orders: @orders_new}
+
+.panel.panel-success
+  .panel-heading
+    .panel-title Выполнены
+  = render partial: "staff/orders/orders", locals: {orders: @orders_success}  

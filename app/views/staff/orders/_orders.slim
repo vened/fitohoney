@@ -1,0 +1,20 @@
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th Номер
+      th Дата
+      th Статус
+      th Стоимость
+      th Кол-во продуктов
+      th
+  -orders.each do |order|
+    tr
+      td=order.number
+      td=order.created_at.strftime("%d.%m.%Y %H:%M")
+      td=order.status_human[:name]
+      td=order.price
+      td=order.count_items
+      td
+        =link_to 'Открыть заказ', staff_order_path(order), class: 'btn btn-info btn-sm'
+        = link_to staff_order_path(order), data: {:confirm => 'Вы уверенны?'}, :method => :delete, class: 'btn btn-danger' do
+          .fa.fa-trash

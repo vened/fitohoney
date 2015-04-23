@@ -1,0 +1,17 @@
+//= require jquery
+//= require jquery_ujs
+//= require js-routes
+//= require turbolinks
+//= require bootstrap-sprockets
+// require bootstrap/carousel
+// require bootstrap/transition
+// require bootstrap/tab
+//= require ie10-viewport-bug-workaround
+//= require angular/angular
+//= require angular-rails-templates
+//= require angular-animate/angular-animate
+//= require angular-ui-utils
+//= require ./app/app.js
+//= require_tree ./app/services
+//= require_tree ./app/templates
+//= require_tree ./app/components

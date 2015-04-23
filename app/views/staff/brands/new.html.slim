@@ -1,0 +1,6 @@
+-content_for :title do
+  | Добавить бренд
+-content_for :action do
+  = link_to 'Назад', staff_brands_path, class: 'btn btn-default'
+
+== render 'form'

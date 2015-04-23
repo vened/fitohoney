@@ -1,0 +1,8 @@
+-content_for :title do
+  | Редактирование 
+  | —
+  =@brand.title
+-content_for :action do
+  = link_to 'Назад', staff_brand_path, class: 'btn btn-default'
+
+== render 'form'

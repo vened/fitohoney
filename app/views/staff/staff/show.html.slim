@@ -1,0 +1,7 @@
+-content_for :title do
+	| Dashboard
+	
+.panel.panel-primary
+  .panel-heading
+    .panel-title Заказы
+  = render partial: "staff/orders/orders", locals: {orders: @orders}

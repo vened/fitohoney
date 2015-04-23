@@ -1,0 +1,13 @@
+//$icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
+@import "vars";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "staff";
+@import "sign_in";
+@import "content";
+@import "photos";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+a{
+    outline: none !important;
+}

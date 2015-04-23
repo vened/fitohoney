@@ -1,0 +1,60 @@
+<div class="form-group">
+	<label>Выбрать фотографии для загрузки</label>
+	<input type="file" nv-file-select="" uploader="uploader" multiple/>
+
+	<div class="row" ng-show="uploader.queue.length > 0">
+		<div class="col-sm-12">
+			<table class="table">
+				<thead>
+				<tr>
+					<th>Изображение</th>
+					<th ng-show="uploader.isHTML5">Размер</th>
+					<th ng-show="uploader.isHTML5">Прогресс</th>
+					<th ng-show="uploader.isHTML5"></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="item in uploader.queue">
+					<td>
+						<div class="thumbnail" ng-show="uploader.isHTML5" uploader-thumb="{ file: item._file, width: 100, height: 100 }"></div>
+					</td>
+					<td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+					<td ng-show="uploader.isHTML5">
+						<div class="progress" style="margin-bottom: 0;">
+							<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+						</div>
+					</td>
+					<td nowrap="">
+						<button ng-disabled="item.isReady || item.isUploading || item.isSuccess" ng-click="item.upload()" class="btn btn-success btn-xs" type="button">
+							<span class="fa fa-upload"></span> Загрузить
+						</button>
+						<button ng-disabled="!item.isUploading" ng-click="item.cancel()" class="btn btn-warning btn-xs" type="button" disabled="disabled">
+							<span class="fa fa-times-circle-o"></span> Отменить
+						</button>
+						<button ng-click="item.remove()" class="btn btn-danger btn-xs" type="button">
+							<span class="fa fa-trash"></span> Удалить
+						</button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<div>
+				<div>
+					Прогресс загрузки
+					<div style="" class="progress">
+						<div ng-style="{ 'width': uploader.progress + '%' }" role="progressbar" class="progress-bar" style="width: 0%;"></div>
+					</div>
+				</div>
+				<button ng-disabled="!uploader.getNotUploadedItems().length" ng-click="uploader.uploadAll()" class="btn btn-success btn-s" type="button" disabled="disabled">
+					<span class="fa fa-upload"></span> Загрузить все
+				</button>
+				<button ng-disabled="!uploader.isUploading" ng-click="uploader.cancelAll()" class="btn btn-warning btn-s" type="button" disabled="disabled">
+					<span class="fa fa-times-circle-o"></span> Отменить все
+				</button>
+				<button ng-disabled="!uploader.queue.length" ng-click="uploader.clearQueue()" class="btn btn-danger btn-s" type="button" disabled="disabled">
+					<span class="fa fa-trash"></span> Удалить все
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

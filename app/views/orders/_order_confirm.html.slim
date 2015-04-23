@@ -1,0 +1,20 @@
+#OrderConfirm.panel.panel-default ng-show="OrderConfirm" 
+  .panel-heading
+    h2.panel-title Оформление заказа, заполните все поля
+  form name="orderForm" ng-submit="orderSubmit(order, cartItems._id.$oid)"
+    .panel-body
+      .form-group
+        label for='name' Ваше имя
+        input.form-control type="text" name="name" required="true" ng-model="order.name"
+      .form-group
+        label for='phone' Контактный телефон
+        input.form-control type="text" name="phone" required="true" ng-model="order.phone" ui-mask="+7 (999) 999-99-99"
+      .form-group
+        label for='email' Email
+        input.form-control type="email" name="email" required="true" ng-model="order.email" 
+      .form-group
+        label for='address' Адрес доставки
+        input.form-control type="text" name="address" required="true" ng-model="order.address"
+
+    .panel-footer.text-right
+      button.btn.btn-success.btn-lg type="submit" Завершить оформление

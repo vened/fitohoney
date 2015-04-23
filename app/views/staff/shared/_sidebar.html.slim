@@ -1,0 +1,45 @@
+.col-sm-3.col-md-2.sidebar
+  ul.nav.nav-sidebar
+    -if request.fullpath == '/staff'
+      li.active
+        =link_to 'Dashboard', staff_dashboard_show_path
+    -else
+      li
+        =link_to 'Dashboard', staff_dashboard_show_path
+    -if @orders_path.present?
+      li.active
+        =link_to 'Заказы', staff_orders_path
+    -else
+      li
+        =link_to 'Заказы', staff_orders_path
+    -if @products_path.present?
+      li.active
+        =link_to 'Продукты', staff_products_path
+    -else
+      li
+        =link_to 'Продукты', staff_products_path
+    -if @categories_path.present?
+      li.active
+        =link_to 'Категории', staff_categories_path
+    -else
+      li
+        =link_to 'Категории', staff_categories_path
+    -if @brands_path.present?
+      li.active
+        =link_to 'Бренды', staff_brands_path
+    -else
+      li
+        =link_to 'Бренды', staff_brands_path
+    -if @feedbacks_path.present?
+      li.active
+        =link_to 'Отзывы', staff_feedbacks_path
+    -else
+      li
+        =link_to 'Отзывы', staff_feedbacks_path
+    -if @carousel_path.present?
+      li.active
+        =link_to 'Карусель', staff_carousels_path
+    -else
+      li
+        =link_to 'Карусель', staff_carousels_path
+        

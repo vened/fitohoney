@@ -1,0 +1,8 @@
+-content_for :title do
+  | Редактирование 
+  | —
+  =@feedback.title
+-content_for :action do
+  = link_to 'Назад', staff_feedback_path, class: 'btn btn-default'
+
+== render 'form'

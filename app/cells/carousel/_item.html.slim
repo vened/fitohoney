@@ -1,0 +1,13 @@
+-if item.path.present?
+  =link_to item.path do
+    =image_tag item.photo.carousel, :alt => item.title
+    -if item.title.present?
+      .carousel-caption
+        h2=item.title
+        p=item.description
+-else
+  =image_tag item.photo.carousel, :alt => item.title
+  -if item.title.present?
+    .carousel-caption
+      h2=item.title
+      p=item.description

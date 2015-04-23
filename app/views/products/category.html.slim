@@ -1,0 +1,45 @@
+-content_for :breadcrumb do
+  ol.breadcrumb
+    li=link_to 'Главная', root_path
+    li=link_to 'Каталог', catalog_path
+    li.active= @category.title
+
+
+h1= @category.title
+  
+
+.row ng-controller="FilterController" ng-init="initFilter('#{@category.id}')"
+  .col-md-9
+    .row.animate-show ng-show="productsShow"
+      .col-md-4 ng-repeat="item in searchResult"
+        .product_cell
+          a.product_cell__image ng-href="item.full_path"
+            img.image ng-src="{{item.product_photos[0].photo.thumb.url}}"
+          a.product_cell__title ng-href="item.full_path"
+            .title 
+              | {{item.title}}
+          .product-cell__content
+            .product-cell__price 
+              | {{item.price}} руб.
+            .product-cell__properties
+              dl.product-cell__property
+                dt 
+                  | {{item.properties[1].n}}
+                dd 
+                  | {{item.properties[1].v}}
+              dl.product-cell__property
+                dt Размеры:
+                dd 
+                  | {{item.properties[2].v}} x {{item.properties[3].v}}
+          .product-cell__footer
+            .btn.btn-primary.btn-block Купить
+
+
+    -cache do        
+      .row.animate-show ng-show="serverProductsShow"
+        - @products.each do |item|
+          .col-md-4.product-col
+            = render partial: "shared/product", locals: {product: item, category: @category}
+
+  .col-md-3
+    = render partial: "shared/filter", locals: {category: @category}

@@ -1,0 +1,17 @@
+<a href="/orders/{{ cartItems._id.$oid }}" class="shopping-cart btn btn-warning" ng-show="cartItems.count_items > 0">
+	<i class="icon-basket-1"></i>
+	<ng-pluralize count="cartItems.count_items"
+	              when="{'0': 'Моя корзина',
+                     'one': 'В корзине 1 товар на',
+                     '2': 'В корзине 2 товара на',
+                     '3': 'В корзине 3 товара на',
+                     '4': 'В корзине 4 товара на',
+                     'other': 'В корзине {} товаров на'}">
+	</ng-pluralize>
+	<strong>{{ cartItems.price | price}}</strong>
+	руб.
+</a>
+<span class="shopping-cart btn btn-warning" ng-hide="cartItems.count_items > 0">
+	<i class="icon-basket-1"></i>
+	Корзина пуста
+</span>

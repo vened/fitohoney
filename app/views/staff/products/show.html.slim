@@ -1,0 +1,32 @@
+-content_for :title do
+  =@product.title
+-content_for :action do
+  = link_to 'Назад', staff_products_path, class: 'btn btn-default'
+  | &nbsp;
+  = link_to 'Добавить новый товар', new_staff_product_path, class: 'btn btn-success'
+  | &nbsp;
+  = link_to 'Редактировать товар', edit_staff_product_path(@product), class: 'btn btn-primary'
+  = link_to staff_product_path(@product), data: {:confirm => 'Вы уверенный?'}, :method => :delete, class: 'btn btn-danger' do
+    .fa.fa-trash
+
+.row
+  .col-md-6
+    dl
+      dt URL
+      dd= @product.path
+      dd= @product.full_path
+    dl
+      dt Цена
+      dd= @product.price
+    dl
+      dt Описание 
+      dd= raw @product.description
+    dl
+      dt Фотографи
+      dd 
+        photos-uploaded resource-name="products" resource-id="#{@product.id}"
+        
+  .col-md-6= render 'staff/products/product_properties'
+    
+
+uploader-component upload-url="#{staff_product_photos_path(@product)}" resource-name="product_id" resource-id="#{@product.id}"

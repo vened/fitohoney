@@ -1,0 +1,14 @@
+.product_cell
+  =link_to feedback_path(item), class: 'product_cell__image' do
+    =image_tag item.photo.large, class: 'image', alt: "#{item.title}"
+  =link_to feedback_path(item), class: 'product_cell__title'
+    .title
+      =item.title
+
+  .product-cell__content
+    .product-cell__properties
+      =item.prev
+
+  .product-cell__footer
+    =link_to 'Читать полностью', feedback_path(item), class: 'btn btn-warning btn-block'
+       

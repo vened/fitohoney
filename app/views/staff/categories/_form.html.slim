@@ -1,0 +1,16 @@
+= form_for [:staff, @category] do |f|
+  - if @category.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@category.errors.count, "error")} prohibited this product from being saved:"
+      ul
+        - @category.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :title, 'Название'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :path, 'URL'
+    = f.text_field :path, class: 'form-control'
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-success'

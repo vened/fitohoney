@@ -1,0 +1,21 @@
+photos-uploaded{
+    display: block;
+
+    .thumbnail{
+        position: relative;
+
+        .fa-trash{
+            position: absolute;
+            bottom: 5px;
+            right: 7px;
+            color: red;
+            font-size: 25px;
+            opacity: .7;
+            cursor: pointer;
+            
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+}

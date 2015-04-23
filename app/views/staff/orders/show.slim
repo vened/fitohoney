@@ -1,0 +1,50 @@
+-content_for :title do
+  | Заказ #
+  =@order.number
+-content_for :action do
+  = link_to 'Назад', staff_orders_path, class: 'btn btn-default'
+  |&nbsp;
+  = link_to 'Выполнен', staff_order_path({order: {status: 1}}), :method => :put, class: 'btn btn-success'
+  = link_to staff_order_path(@order), data: {:confirm => 'Вы уверенны?'}, :method => :delete, class: 'btn btn-danger' do
+    .fa.fa-trash
+
+ul.list-group
+  li.list-group-item
+    b Номер заказа:&nbsp;
+    =@order.number
+  li.list-group-item
+    b Дата поступления заказа:&nbsp;
+    =@order.created_at.strftime("%d.%m.%Y %H:%M")
+  li.list-group-item
+    b Статус:&nbsp;
+    =@order.status_human[:name]
+  li.list-group-item
+    b Имя заказчика:&nbsp;
+    =@order.name
+  li.list-group-item
+    b Email заказчика:&nbsp;
+    =@order.email
+  li.list-group-item
+    b Телефон заказчика:&nbsp;
+    =@order.phone
+  li.list-group-item
+    b Адрес доставки:&nbsp;
+    =@order.address
+  li.list-group-item
+    b Стоимость:&nbsp;
+    =@order.price
+
+.row
+  -@order.order_items.each do |item|
+    .col-md-3
+      =link_to staff_product_path(item.product_id), class: 'thumbnail', target: '_blank' do
+        h6.text-center.text-nowrap=item.title
+        =image_tag item.photo, class: 'image'
+        div
+          b Цена за шт.:&nbsp;
+          =item.price
+        div
+          b Количество:&nbsp;
+          =item.count
+        = link_to staff_order_item_delete_path(item_id: item.product_id, order_id: @order.session_id), data: {:confirm => 'Вы уверенны?'}, :method => :delete, class: 'btn btn-danger' do
+          .fa.fa-trash

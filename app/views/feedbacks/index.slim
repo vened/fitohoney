@@ -1,0 +1,15 @@
+- content_for :title do
+  | Отзывы о нашем магазине меда - у нас можно купить натуральный мед
+
+- content_for :breadcrumb do
+  ol.breadcrumb
+    li= link_to 'Главная', root_path
+    li.active Отзывы о нашем магазине меда
+
+.container.content-page
+  .row style="margin-bottom: 50px"
+    -@feedbacks.each do |item|
+      .col-xs-12.col-sm-6.col-md-3
+        = render partial: "../views/shared/feedback", locals: {item: item}
+
+  = render_cell :products, :popular

@@ -1,0 +1,22 @@
+-content_for :title do
+  =@brand.title
+-content_for :action do
+  = link_to 'Назад', staff_brands_path, class: 'btn btn-default'
+  | &nbsp;
+  = link_to 'Редактировать', edit_staff_brand_path(@brand), class: 'btn btn-success'
+  = link_to staff_brand_path(@brand), data: {:confirm => 'Вы уверенный?'}, :method => :delete, class: 'btn btn-danger' do
+    .fa.fa-trash
+
+h2=@brand.title
+p=@brand.path
+p=image_tag @brand.photo.thumb
+
+br
+br
+h2.page-header Товары
+.row
+  -@brand.products.each do |item|
+    .col-md-2
+      h3=item.title
+      -if item.product_photos.first.present?
+        =image_tag item.product_photos.first.photo.thumb, class: "img-responsive"

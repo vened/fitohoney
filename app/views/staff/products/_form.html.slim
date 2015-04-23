@@ -1,0 +1,25 @@
+= form_for [:staff, @product] do |f|
+  - if @product.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+      ul
+        - @product.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :title, 'Название'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :brand, 'Бренд'
+    = f.collection_select(:brand, Brand.all, :id, :title)
+  .form-group
+    = f.label :category, 'Категория'
+    = f.collection_select(:category, Category.all, :id, :title)
+  .form-group
+    = f.label :price, 'Цена'
+    = f.text_field :price, class: 'form-control'
+  .form-group
+    = f.label :description, 'Описание'
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.submit 'Сохранить товар', class: 'btn btn-success'

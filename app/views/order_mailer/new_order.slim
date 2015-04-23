@@ -1,0 +1,11 @@
+h2 style="font-weight: normal" 
+  | Новый заказ №
+  = @order.id
+
+
+table style="border: 1px solid #333"
+  tbody
+    -@order.order_items.each do |item|
+      tr
+        td style="padding: 8px; border: 1px solid #333"=item.title
+        td style="padding: 8px; border: 1px solid #333"=image_tag attachments[item.photo].url  

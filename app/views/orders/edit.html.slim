@@ -1,0 +1,44 @@
+-content_for :title do
+  | - 
+  | Оформление заказа
+
+.container
+  .row.product-page
+    .col-xs-12.col-sm-12.col-md-12
+      h1 Оформление заказа
+
+    .col-xs-9.col-sm-9.col-md-9
+      .panel.panel-default
+        = form_for @order do |f|
+          .panel-body
+            .form-group
+              = f.label :name, 'Ваше имя'
+              = f.text_field :name, class: 'form-control'
+            .form-group
+              = f.label :phone, 'Контактный телефон'
+              = f.text_field :phone, class: 'form-control'
+            .form-group
+              = f.label :email, 'Email'
+              = f.text_field :email, class: 'form-control'
+            .form-group
+              = f.label :address, 'Адрес доставки'
+              = f.text_field :address, class: 'form-control'
+
+          .panel-footer
+            .row
+              .col-xs-8.col-sm-8.col-md-8
+                .cart-price-all
+                  | Сумма заказа: 
+                  strong
+                    | {{cartItems.price}}
+                    | &nbsp;
+                    i class="fa fa-rub"
+              .col-xs-4.col-sm-4.col-md-4.text-right
+                =link_to 'Оформить заказ', edit_order_path(@order), class: 'btn btn-success btn-lg'
+
+
+    .col-xs-3.col-sm-3.col-md-3
+      =render 'orders/order_sidebar'
+
+
+        

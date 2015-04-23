@@ -1,0 +1,11 @@
+-content_for :title do
+  =@category.title
+-content_for :action do
+  = link_to 'Назад', staff_categories_path, class: 'btn btn-default'
+  | &nbsp;
+  = link_to 'Редактировать', edit_staff_category_path(@category), class: 'btn btn-success'
+  = link_to staff_category_path(@category), data: {:confirm => 'Вы уверенны?'}, :method => :delete, class: 'btn btn-danger' do
+    .fa.fa-trash
+
+h2=@category.title
+p=@category.path

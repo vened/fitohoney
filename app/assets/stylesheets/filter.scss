@@ -1,0 +1,137 @@
+.product-filters{
+	margin: 0 0 30px;
+	box-shadow: 0 0 0 1px $cell-border-color;
+}
+.filter-block{
+	transition: all 0.15s ease-out 0s;
+	border-bottom: 1px solid $cell-border-color;
+
+	&:last-child{
+		border-bottom: none;
+	}
+
+	&:hover{
+		background-color: #f7f7f7;
+	}
+
+	&.open{
+		.filter-block__header{
+			&:after{
+				content: '\e80c';
+			}
+		}
+		.filter-block__body{
+			height: auto;
+			opacity: 1;
+		}
+		.filter-block__list{
+			overflow: hidden;
+		}
+	}
+}
+.filter-block__header{
+	position: relative;
+	cursor: pointer;
+	@extend .noselect;
+
+	&:after{
+		position: absolute;
+		content: '\e80d';
+		top: 11px;
+		left: 16px;
+		font-family: 'fontello';
+		font-size: 18px;
+		color: #bfbfbf;
+		font-weight: normal;
+	}
+
+	.title{
+		padding: 12px 40px 11px 36px;
+	}
+
+	&:hover{
+		color: $link-hover-color;
+	}
+}
+.filter-block__body{
+	display: block;
+	opacity: 0;
+	height: 0;
+	max-height: 405px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+	z-index: 2;
+	transition: all 0.35s ease-out 0s;
+}
+.filter-block__list{
+	padding: 5px 15px 3px;
+}
+.filter-block__item{
+	display: block;
+	line-height: normal;
+	margin-bottom: 7px;
+	vertical-align: top;
+	word-wrap: break-word;
+}
+.checkbox__box__container{
+	position: relative;
+	font-size: 13px;
+}
+.checkbox__box{
+	position: absolute;
+	top: 2px;
+	width: 14px;
+	height: 14px;
+}
+.checkbox__control{
+	background: rgba(0, 0, 0, 0);
+	border: 0 none;
+	height: 101%;
+	left: 0;
+	margin: 0;
+	opacity: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	width: 101%;
+	z-index: 4;
+
+	&:checked{
+		+ .checkbox__tick{
+			border-color: rgba(153, 122, 0, 0.5);
+			background-color: #ffeba0;
+
+			&:before{
+				position: absolute;
+				content: '\e80e';
+				top: -4px;
+				left: 2px;
+				font-family: 'fontello';
+				font-size: 16px;
+				color: #333;
+				font-weight: normal;
+			}
+		}
+	}
+}
+.checkbox__tick{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	background-color: #fff;
+	transition: all 0.05s ease-out 0s;
+}
+.checkbox__label{
+	display: inline-block;
+	line-height: 18px;
+	margin: 0;
+	padding: 0 0 0 20px;
+	max-width: 100%;
+	padding-left: 21px;
+	font-size: 13px;
+	font-weight: normal;
+	font-family: 'Arial';
+}

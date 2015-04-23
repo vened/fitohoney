@@ -1,0 +1,26 @@
+.slider-container
+  .container
+    .slider
+      #carousel-example-generic.carousel.slide data-ride="carousel"
+        ol class="carousel-indicators"
+          -@carousel.each_with_index do |item, i|
+            -if (i == 0)
+              li data-target="#carousel-example-generic" data-slide-to="0" class="active"
+            -else
+              li data-target="#carousel-example-generic" data-slide-to="#{i}"
+      
+      
+        .carousel-inner role="listbox"
+          -@carousel.each_with_index do |item, i|
+            -if (i == 0)
+              .item.active
+                = render partial: 'item', object: item
+            -else
+              .item
+                = render partial: 'item', object: item
+      
+        a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"
+          span class="icon-left-open-big" aria-hidden="true"
+      
+        a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"
+          span class="icon-right-open-big" aria-hidden="true"

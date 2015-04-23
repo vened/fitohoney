@@ -1,0 +1,14 @@
+-content_for :title do
+  | Наши продукты, здесь вы можете купить натуральный мед разных сортов
+
+-content_for :breadcrumb do
+  ol.breadcrumb
+    li=link_to 'Главная', root_path
+    li.active Наши продукты
+    
+.container.content-page
+  h1.page-header Наши продукты, здесь вы можете купить натуральный мед разных сортов
+  .row
+    - @products.each do |product|
+      .col-md-3.product
+        = render partial: "../views/shared/product", locals: {product: product}

@@ -1,0 +1,17 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      =link_to staff_dashboard_show_path, :class => 'navbar-brand' do
+        | Staff
+        | &nbsp;
+        = yield :title
+    #navbar.navbar-collapse.collapse
+      -if admin_signed_in?
+        ul.nav.navbar-nav.navbar-right
+          li= link_to current_admin.email, '#'
+          li= link_to 'Выйти', destroy_admin_session_path, :method => :delete

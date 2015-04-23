@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--!DOCTYPE supplier_catalog SYSTEM "supplier_catalog.dtd"-->
+<supplier_catalog date="2015-04-16 18:22" version="1.0">
+  <supplier>
+    <categories>
+      <category id="1">Керамическая плитка</category>
+      <category id="2" parentId="1">Керамогранит</category>
+      <category id="3" parentId="1">Мозаика</category>
+    </categories>
+    <offers>
+      <offer id="00000000001">
+        <categoryId>2</categoryId>
+        <name>Miracolo</name>
+        <description>
+          Настенная плитка в светло-бежевых тонах с фоновым рисунком,
+          имитирующим прибрежный песок, выгодно подчеркнет изысканность вашей ванной комнаты.
+        </description>
+        <origin_price>2000</origin_price>
+        <max_sale>30%</max_sale>
+        <stock>4</stock>
+        <unit>шт.</unit>
+        <!--!!!важно, название бренда везде должно быть одинаковым, регистр букв тоже имеет значении-->
+        <brand>Villa Ceramica</brand>
+        <country>Италия-Китай</country>
+        <!--блок с аттрибутами товара, их может быть любое количество, 
+            желательно что бы в каждой категории у товаров был одинаковый набор аттрибутов-->
+        <properties>
+          <property unit="см." name="Ширина">100</property>
+          <property unit="см." name="Высота">80</property>
+          <property unit="" name="Материал">Белая глина</property>
+          <property unit="" name="Цвет">Красно-синий</property>
+          <property unit="" name="Назначение">Декоративные элементы</property>
+          <property unit="шт." name="Кол-во плиток в коробке">30</property>
+          <property unit="м2" name="Кол-во метров в коробке">1.08</property>
+        </properties>
+      </offer>
+    </offers>
+  </supplier>
+</supplier_catalog>
