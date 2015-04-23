@@ -1,0 +1,13 @@
+# ansible-playbook -i hosts playbook.yml
+---
+- hosts: webservers #Указываем группу хостов
+  remote_user: root #пользователь под которым ansible будет логиниться
+
+  vars_files:
+    - vars.yml #Файл, содержащий переменные которые нам потребуются, например расположения директорий
+
+  roles: # Блок ролей, у нас пока одна роль 
+    - user
+    - webserver
+    - ruby
+    - mongodb

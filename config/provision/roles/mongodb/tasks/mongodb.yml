@@ -1,0 +1,7 @@
+- name: Install app dependencies
+  action: 'apt pkg={{ item }}'
+  with_items:
+    - 'mongodb'
+
+- name: Start Mongodb
+  command: service mongodb start

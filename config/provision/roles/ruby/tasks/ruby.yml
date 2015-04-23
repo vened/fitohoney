@@ -1,0 +1,51 @@
+---
+  - name: 'rbenv | clone repo'
+    git: 'repo=git://github.com/sstephenson/rbenv.git dest={{ rbenv_root }} accept_hostkey=yes'
+
+  - name: 'rbenv | check ruby-build installed'
+    command: 'test -x {{ rbenv_root }}/plugins/ruby-build'
+    # Мы проверяем, установлен ли ruby-build и регистрируем событие plugin_installed,
+    # а затем выполняем все остальные шаги, которые не были изменены при следующем прогоне плейбука
+    register: 'plugin_installed'
+    ignore_errors: yes
+
+  - name: 'rbenv | add bin to path'
+    shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> {{ home }}/.bashrc
+    when: 'plugin_installed|failed'
+
+  - name: 'rbenv | init'
+    shell: echo 'eval "$(rbenv init -)"' >> {{ home }}/.bashrc
+    when: 'plugin_installed|failed'
+
+  - name: 'rbenv | clone ruby-build repo'
+    git: 'repo=git://github.com/sstephenson/ruby-build.git dest={{ rbenv_root }}/plugins/ruby-build accept_hostkey=yes'
+    when: 'plugin_installed|failed'
+
+  - name: 'rbenv | check ruby {{ ruby_version }} installed'
+    shell: 'RBENV_ROOT={{ rbenv_root }} PATH="$RBENV_ROOT/bin:$PATH" rbenv versions | grep {{ ruby_version }}'
+    register: 'ruby_installed'
+    ignore_errors: yes
+
+  - name: 'rbenv | install ruby {{ ruby_version }}'
+    shell: 'RBENV_ROOT={{ rbenv_root }} PATH="$RBENV_ROOT/bin:$PATH" rbenv install {{ ruby_version }}'
+    when: 'ruby_installed|failed'
+
+  - name: 'rbenv | set global ruby {{ ruby_version }}'
+    shell: 'RBENV_ROOT={{ rbenv_root }} PATH="$RBENV_ROOT/bin:$PATH" rbenv global {{ ruby_version }}'
+    when: 'ruby_installed|failed'
+
+  - name: 'rbenv | rehash'
+    shell: 'RBENV_ROOT={{ rbenv_root }} PATH="$RBENV_ROOT/bin:$PATH" rbenv rehash'
+    when: 'ruby_installed|failed'
+
+  - name: 'rbenv | create .gemrc'
+    lineinfile: 'dest={{ home }}/.gemrc owner={{ user }} group={{ user }} mode=0644 line="gem: --no-ri --no-rdoc" create=yes'
+    when: 'ruby_installed|failed'
+
+  - name: 'ruby | install bundler'
+    shell: 'RBENV_ROOT={{ rbenv_root }} PATH="$RBENV_ROOT/bin:$PATH" rbenv exec gem install bundler'
+    when: 'ruby_installed|failed'
+
+  - name: 'rbenv | change owner'
+    shell: 'chown -R {{ user }}:{{ user }} {{ rbenv_root }}'
+    when: 'ruby_installed|failed'

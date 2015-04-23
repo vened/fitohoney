@@ -1,15 +1,15 @@
 lock '3.3.5'
 # Название приложения
-set :application, 'taxi'
+set :application, 'fitohoney'
 set :user, 'deploy'
 set :use_sudo, true
 # Путь к git репозиторию
-set :repo_url, 'git@bitbucket.org:vened/taxi.git'
+set :repo_url, 'git@github.com:vened/fitohoney.git'
 # Ветка по-умолчанию
 set :branch, 'master'
 # Директория для деплоя
-set :deploy_to, '/home/deploy/www/taxi'
-set :shared_path, '/home/deploy/www/taxi/shared'
+set :deploy_to, '/home/deploy/www/fitohoney'
+set :shared_path, '/home/deploy/www/fitohoney/shared'
 
 set :log_level, :info
 # Копирующиеся файлы и директории (между деплоями)

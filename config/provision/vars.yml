@@ -1,0 +1,10 @@
+user: 'deploy'
+home: '/home/{{ user }}'
+name: 'fitohoney'
+deploy_dir: '{{ home }}/www/{{ name }}'
+database_name: fitohoney
+database_username: deploy
+database_password: qwerty
+
+ruby_version: '2.1.5'
+rbenv_root: '{{ home }}/.rbenv'

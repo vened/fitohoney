@@ -1,0 +1,46 @@
+- name: Install app dependencies
+  action: 'apt pkg={{ item }}'
+  with_items:
+    - 'libpq-dev'
+
+- name: Install python-pycurl
+  apt: pkg=python-pycurl state=latest
+ 
+- name: Add PostgreSQL repo key
+  apt_key: url=http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc
+ 
+- name: Add PostgreSQL repo
+  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main'
+
+- name: Install PostgreSQL
+  apt: pkg=postgresql-9.3 state=latest update_cache=true
+ 
+- name: Copy valid pg_hba.conf
+  template: src=pg_hba.conf.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf
+ 
+- name: Copy valid postgresql.conf
+  template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
+
+- name: Restart PostgreSQL
+  command: service postgresql restart
+
+- name: Create db user
+  action: template src=pg_create_role.sql dest=/tmp/pg_create_role.sql mode=0644 owner={{ user }} group={{ user }}
+
+- name: copy db1
+  action: shell sudo -u postgres psql -f /tmp/pg_create_role.sql -o /tmp/pg_create_role.out
+
+- name: copy db2  
+  action: file path=/tmp/pg_create_role.sql state=absent
+
+- name: postgresql - create db for production mode
+  sudo_user: postgres
+  postgresql_db: name="{{ database_name }}_prod" encoding="UTF-8" lc_collate="en_US.UTF-8" lc_ctype="en_US.UTF-8" owner={{ database_username }} template="template0"
+
+- name: postgresql - create db for test mode
+  sudo_user: postgres
+  postgresql_db: name="{{ database_name }}_test" encoding="UTF-8" lc_collate="en_US.UTF-8" lc_ctype="en_US.UTF-8" owner={{ database_username }} template="template0"
+
+- name: postgresql - create db for development
+  sudo_user: postgres
+  postgresql_db: name="{{ database_name }}_development" encoding="UTF-8" lc_collate="en_US.UTF-8" lc_ctype="en_US.UTF-8" owner={{ database_username }} template="template0"
