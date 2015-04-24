@@ -46,10 +46,10 @@ namespace :data do
           # execute :rake, "db:drop"
           # execute :rake, "db:create"
           # execute :rake, "db:migrate"
-          execute :rake, "db:migrate:down VERSION=20150303064951"
-          execute :rake, "db:migrate:up VERSION=20150303064951"
-          execute :rake, "db:migrate:down VERSION=20150311115255"
-          execute :rake, "db:migrate:up VERSION=20150311115255"
+          # execute :rake, "db:migrate:down VERSION=20150303064951"
+          # execute :rake, "db:migrate:up VERSION=20150303064951"
+          # execute :rake, "db:migrate:down VERSION=20150311115255"
+          # execute :rake, "db:migrate:up VERSION=20150311115255"
           execute :rake, "db:seed"
         end
       end
