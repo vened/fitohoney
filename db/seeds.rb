@@ -1,4 +1,4 @@
-require 'factory_girl_rails'
+# require 'factory_girl_rails'
 
 Admin.create(email: "maxstbn@gmail.com", password: "qwerty123", password_confirmation: "qwerty123")
 
