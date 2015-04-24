@@ -1,4 +1,4 @@
-lock '3.3.5'
+lock '3.4.0'
 # Название приложения
 set :application, 'fitohoney'
 set :user, 'deploy'
