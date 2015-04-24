@@ -17,12 +17,18 @@ set :log_level, :info
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads}
 
 # Ruby свистелки
-set :rbenv_type, :user
-set :rbenv_ruby, '2.1.5'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-set :rbenv_roles, :all
+# set :rbenv_type, :user
+# set :rbenv_ruby, '2.1.5'
+# set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+# set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+# set :rbenv_roles, :all
 
+
+# deploy.rb or stage file (staging.rb, production.rb or else)
+set :rvm_type, :user # Defaults to: :auto
+set :rvm_ruby_version, '2.2.1' # Defaults to: 'default'
+set :rvm_custom_path, '/usr/local/rvm/bin/rvm' # only needed if not detected
+set :rvm_roles, :all
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_init_active_record, true
