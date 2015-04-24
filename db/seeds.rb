@@ -2,27 +2,27 @@ require 'factory_girl_rails'
 
 Admin.create(email: "maxstbn@gmail.com", password: "qwerty123", password_confirmation: "qwerty123")
 
-@brand = Brand.create(title: 'Villa Ceramica')
+# @brand = Brand.create(title: 'Villa Ceramica')
 
-6.times do
-  category = FactoryGirl.create :category
-  10.times do
-    product = FactoryGirl.create :product
-    property_color = FactoryGirl.build :property_color
-    property_country = FactoryGirl.build :property_country
-    property_width = FactoryGirl.build :property_width
-    property_height = FactoryGirl.build :property_height
-    product.properties << property_color
-    product.properties << property_country
-    product.properties << property_width
-    product.properties << property_height
-    # product.product_photos.create(photo: File.open(Rails.root.to_s + "/public/content/1.jpg"))
-    product.product_photos.create(photo: File.open(Rails.root.to_s + "/public/content/2.jpg"))
-    # product.product_photos.create(photo: File.open(Rails.root.to_s + "/public/content/3.jpg"))
-    category.products << product
-    @brand.products << product
-  end
-end
+# 6.times do
+#   category = FactoryGirl.create :category
+#   10.times do
+#     product = FactoryGirl.create :product
+#     property_color = FactoryGirl.build :property_color
+#     property_country = FactoryGirl.build :property_country
+#     property_width = FactoryGirl.build :property_width
+#     property_height = FactoryGirl.build :property_height
+#     product.properties << property_color
+#     product.properties << property_country
+#     product.properties << property_width
+#     product.properties << property_height
+#     # product.product_photos.create(photo: File.open(Rails.root.to_s + "/public/content/1.jpg"))
+#     product.product_photos.create(photo: File.open(Rails.root.to_s + "/public/content/2.jpg"))
+#     # product.product_photos.create(photo: File.open(Rails.root.to_s + "/public/content/3.jpg"))
+#     category.products << product
+#     @brand.products << product
+#   end
+# end
 
 # 
 # @cat = Category.create(title: 'Напольная плитка')
