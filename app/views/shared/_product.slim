@@ -7,10 +7,10 @@
     .product-cell__price
       =number_to_currency(product.price, locale: :ru)
     .product-cell__properties
-      dl.product-cell__property
+      /dl.product-cell__property
         dt Страна:
         dd=product.properties.find_by(name: 'Страна').value
-      dl.product-cell__property
+      /dl.product-cell__property
         dt Размеры:
         dd
           =product.properties.find_by(name: 'Ширина').value
@@ -18,4 +18,4 @@
           =product.properties.find_by(name: 'Высота').value
       
   .product-cell__footer
-    .btn.btn-primary.btn-block Купить
+    .btn.btn-primary.btn-block ng-click="addOrder('#{product.id}', 1)" Купить
