@@ -11,7 +11,7 @@
     = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :path, 'URL'
-    -path_array = Product.all.map { |item| [item.title, "#{products_path}/#{item.id}"] }
+    -path_array = Product.all.map { |item| [item.title, "#{item.full_path}"] }
     = f.select(:path, options_for_select(path_array))
   .form-group
     = f.label :description, 'Текст'
