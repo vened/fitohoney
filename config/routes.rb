@@ -33,8 +33,8 @@ Rails.application.routes.draw do
 
   resources :feedbacks, only: [:index, :show]
   get '/catalog' => 'products#index', as: 'catalog'
-  get '/catalog/:category_path' => 'products#category'
-  get '/catalog/:category_path/:product_path' => 'products#show', as: 'product'
+  # get '/catalog/:product_path' => 'products#show'
+  get '/catalog/:product_path' => 'products#show', as: 'product'
   resources :orders, only: [:show, :create]
   get '/api/mini_cart' => 'orders#mini_cart'
   get '/api/cart_item_inc' => 'orders#cart_item_inc'
