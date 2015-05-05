@@ -1,6 +1,7 @@
 # require 'factory_girl_rails'
 
 Admin.create(email: "maxstbn@gmail.com", password: "qwerty123", password_confirmation: "qwerty123")
+Admin.create(email: "levunova@fitohoney.ru", password: "karibuni", password_confirmation: "karibuni")
 
 # @brand = Brand.create(title: 'Villa Ceramica')
 
@@ -47,18 +48,18 @@ Admin.create(email: "maxstbn@gmail.com", password: "qwerty123", password_confirm
 # end
 
 
-Carousel.create(
-    title: 'Коллекция Glamour 300*600',
-    description: 'Коллекция керамической плитки Glamour от VILLA CERAMICA создана для ванных комнат. 
-              Чёрно-белая, монохромная гамма коллекции в 
-              совокупности со стеклянной мозаикой тех же оттенков создаёт действительно потрясающий эффект.',
-    path: '',
-    photo: File.open(Rails.root.to_s + "/public/content/carousel-1.jpg")
-)
-Carousel.create(
-    title: 'Коллекция Elysse 300*600',
-    description: 'Плитка из коллекции "ELYSSE" предназначена для оформления дорогих и изысканных помещений.
-              Она идеально подойдёт как для ванных комнат так и для гостинных и прихожих.',
-    path: '',
-    photo: File.open(Rails.root.to_s + "/public/content/carousel-2.jpg")
-)
+# Carousel.create(
+#     title: 'Коллекция Glamour 300*600',
+#     description: 'Коллекция керамической плитки Glamour от VILLA CERAMICA создана для ванных комнат. 
+#               Чёрно-белая, монохромная гамма коллекции в 
+#               совокупности со стеклянной мозаикой тех же оттенков создаёт действительно потрясающий эффект.',
+#     path: '',
+#     photo: File.open(Rails.root.to_s + "/public/content/carousel-1.jpg")
+# )
+# Carousel.create(
+#     title: 'Коллекция Elysse 300*600',
+#     description: 'Плитка из коллекции "ELYSSE" предназначена для оформления дорогих и изысканных помещений.
+#               Она идеально подойдёт как для ванных комнат так и для гостинных и прихожих.',
+#     path: '',
+#     photo: File.open(Rails.root.to_s + "/public/content/carousel-2.jpg")
+# )
