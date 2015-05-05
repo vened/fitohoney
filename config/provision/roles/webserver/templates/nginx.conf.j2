@@ -4,6 +4,7 @@ upstream backend {
 
 server {
   listen 80;
+  client_max_body_size 10m;
 
   root {{ deploy_dir }}/current/public;
 
