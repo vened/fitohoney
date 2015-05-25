@@ -17,7 +17,47 @@
       dd= @product.full_path
     dl
       dt Цена
-      dd= @product.price
+      dd
+        |1
+        =@product.unit
+        | —
+        = @product.price
+        | руб.
+        
+    dl
+      dt Скидка %
+      dd= @product.sale
+    dl
+      dt Единица измерения кол-ва товара
+      dd= @product.unit
+      
+    -if @product.measure_1.present?
+      p
+        b
+          =@product.measure_1
+          =@product.unit
+        | —
+        =@product.measure_1_price
+        | руб.
+        
+    -if @product.measure_2.present?
+      p
+        b
+          =@product.measure_2
+          =@product.unit
+        | —
+        =@product.measure_2_price
+        | руб.
+        
+    -if @product.measure_3.present?
+      p
+        b
+          =@product.measure_3
+          =@product.unit
+        | —
+        =@product.measure_3_price
+        | руб.
+        
     dl
       dt Описание 
       dd= raw @product.description

@@ -23,7 +23,31 @@
   
     .col-md-7
       h1 itemprop="name"= @product.title
-      -if @product.price
+
+      .product-price
+        -if @product.measure_1.present?
+          .radio:label
+            input type="radio" name="measure" value="0" checked=""
+            =@product.measure_1
+            =@product.unit
+            |&nbsp;—&nbsp;
+            =number_to_currency(@product.measure_1_price, locale: :ru)
+        -if @product.measure_2.present?
+          .radio:label
+            input type="radio" name="measure" value="0"
+            =@product.measure_2
+            =@product.unit
+            |&nbsp;—&nbsp;
+            =number_to_currency(@product.measure_2_price, locale: :ru)
+        -if @product.measure_3.present?
+          .radio:label
+            input type="radio" name="measure" value="0"
+            =@product.measure_3
+            =@product.unit
+            |&nbsp;—&nbsp;
+            =number_to_currency(@product.measure_3_price, locale: :ru)
+          
+      -if @product.price && @product.measure_1.blank?
         dl.product-property.price itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"
           dt Цена:
           dd=number_to_currency(@product.price, locale: :ru)

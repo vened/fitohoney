@@ -10,14 +10,44 @@
     = f.label :title, 'Название'
     = f.text_field :title, class: 'form-control'
   .form-group
-    = f.label :brand, 'Бренд'
-    = f.collection_select(:brand, Brand.all, :id, :title)
+    = f.label :price_origin, 'Цена, указывается за один кг., л. или шт., без скидки'
+    = f.text_field :price_origin, class: 'form-control'
   .form-group
-    = f.label :category, 'Категория'
-    = f.collection_select(:category, Category.all, :id, :title)
+    = f.label :sale, 'Скидка %'
+    = f.text_field :sale, class: 'form-control'
   .form-group
-    = f.label :price, 'Цена'
-    = f.text_field :price, class: 'form-control'
+    = f.label :unit, 'Единица измерения кол-ва товара'
+    = f.select(:unit, options_for_select([['килограмм', 'кг.'], ['литр', 'л.'], ['штука', 'шт.']]))
+  
+  fieldset
+    legend Варианты продажи
+    .row
+      .col-md-6
+        .form-group
+          = f.label :measure_1, 'Вариант товара - 1'
+          = f.text_field :measure_1, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :measure_1_price, 'Вариант товара - 1 цена'
+          = f.text_field :measure_1_price, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = f.label :measure_2, 'Вариант товара - 2'
+          = f.text_field :measure_2, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :measure_2_price, 'Вариант товара - 2 цена'
+          = f.text_field :measure_2_price, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = f.label :measure_3, 'Вариант товара - 3'
+          = f.text_field :measure_3, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :measure_3_price, 'Вариант товара - 3 цена'
+          = f.text_field :measure_3_price, class: 'form-control'
   .form-group
     = f.label :description, 'Описание'
     = f.text_area :description, class: 'form-control'

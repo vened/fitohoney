@@ -5,19 +5,35 @@ class Product
 
   field :title, type: String, default: ""
   field :description, type: String, default: ""
-  field :price, type: Float, default: 0.0
 
-  field :parent_id, type: BSON::ObjectId, default: nil
+
+  field :price, type: Float, default: 0.0
+  field :price_origin, type: Float, default: 0.0
+  field :sale, type: Integer, default: 0
+
+
+  field :unit, type: String, default: "кг." # единица измерения кол-ва товара 1 - килограмм, 2 - литр, 3 - штука
+  field :measure, type: Integer, default: 1 # минимальный объем покупки
+
+
+  # модификации товара
+  field :measure_1, type: Float, default: 0.0 # минимальный объем покупки модификации
+  field :measure_1_price, type: Float, default: 0.0
+  field :measure_2, type: Float, default: 0.0 # минимальный объем покупки модификации
+  field :measure_2_price, type: Float, default: 0.0
+  field :measure_3, type: Float, default: 0.0 # минимальный объем покупки модификации
+  field :measure_3_price, type: Float, default: 0.0
+
 
   field :path, type: String
   field :full_path, type: String
+
 
   field :created_at, type: Time
   field :updated_at, type: Time
 
   embeds_many :product_photos
   embeds_many :properties
-  embeds_many :nested_products
   belongs_to :brand
   belongs_to :category, index: true
 
@@ -28,54 +44,6 @@ class Product
 
 
   before_save :product_price, :create_path, :create_full_path
-
-  ##################################################################
-  # begin вложенные продукты
-  # добавление в массив :nested_products id связанного продукта
-  # в связанном продукте добавляем :parent_id родительского продукта
-  def create_nested_products(product, group_title)
-
-    group = self.nested_products.find_by(title: group_title)
-
-    if group.blank?
-      self.nested_products.create(title: group_title, products: [product.id])
-    else
-      group.products << product.id
-    end
-    # 
-    # group[:group] = 'Базовая плитка'
-    # group[:products].push product.id
-    # 
-    # self.nested_products.push group
-    self.save!
-    product.parent_id = self.id
-    product.save!
-  end
-
-
-  def find_nested_products
-    if self.nested_products.present?
-      Product.find(self.nested_products)
-    else
-      []
-    end
-  end
-
-
-  def destroy_nested_product nested_product
-    if self.nested_products.include?(nested_product.id)
-      self.nested_products.delete(nested_product.id)
-      nested_product.parent_id = nil
-      self.save!
-      nested_product.save!
-    else
-      []
-    end
-  end
-
-
-  # end вложенные продукты
-  ##################################################################
 
 
   # транслитерация названия продукта это будет кусочком полного пути к продукту
@@ -106,6 +74,21 @@ class Product
   protected
   # округление цены до двух знаков после запятой
   def product_price
-    price.round(2)
+    self.price_origin.round(2)
+    self.price = self.price_origin * (100 - sale)/100
+    self.price.round(2)
+
+    if measure_1 > 0
+      self.measure_1_price = self.measure_1 * self.price
+      self.measure_1_price.round(2)
+    end
+    if measure_2 > 0
+      self.measure_2_price = self.measure_2 * self.price
+      self.measure_2_price.round(2)
+    end
+    if measure_3 > 0
+      self.measure_3_price = self.measure_3 * self.price
+      self.measure_3_price.round(2)
+    end
   end
 end
