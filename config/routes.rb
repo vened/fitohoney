@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post 'photos' => 'product_photos#upload_product_photo'
       delete 'photos/:photo_id' => 'product_photos#destroy_product_photo'
     end
-    namespace :api, defaults: {format: :json} do
+    namespace :api, defaults: { format: :json } do
       # свойства товара
       resources :properties, :only => [:create]
       delete 'properties/:property_id/:product_id' => 'properties#destroy', as: 'property_destroy'
@@ -24,12 +24,20 @@ Rails.application.routes.draw do
   end
 
   devise_for :admins
-  
+
   namespace :api do
     # фильтры по товарам
     get '/filters' => 'filters#filters'
     get '/filtering' => 'filters#filtering'
   end
+
+
+  # pages
+  root 'pages#home'
+  get '/about' => 'pages#about'
+  get '/delivery' => 'pages#delivery'
+  get '/sitemap' => 'pages#sitemap'
+
 
   resources :feedbacks, only: [:index, :show]
   get '/catalog' => 'products#index', as: 'catalog'
@@ -40,11 +48,6 @@ Rails.application.routes.draw do
   get '/api/cart_item_inc' => 'orders#cart_item_inc'
   put '/api/orders/:id' => 'orders#update', as: 'api_order_update'
   delete '/api/cart_item_delete' => 'orders#cart_item_delete'
-
-  # pages
-  root 'pages#home'
-  get '/about' => 'pages#about'
-  get '/delivery' => 'pages#delivery'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

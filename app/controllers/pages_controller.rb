@@ -5,4 +5,11 @@ class PagesController < ApplicationController
   end
   def delivery
   end
+
+
+  def sitemap
+    @url        = "http://fitohoney.ru"
+    @products = Product.all
+    @feedbacks = Feedback.all
+  end
 end

@@ -1,4 +1,3 @@
-<noindex>
 <a href="/orders/{{ cartItems._id.$oid }}" class="shopping-cart btn btn-warning" ng-show="cartItems.count_items > 0">
 	<i class="icon-basket-1"></i>
 	<ng-pluralize count="cartItems.count_items"
@@ -13,7 +12,6 @@
 	руб.
 </a>
 <span class="shopping-cart btn btn-warning" ng-hide="cartItems.count_items > 0">
-	<i class="icon-basket-1"></i>
-	Корзина пуста
-</span>
-</noindex>
+		<i class="icon-basket-1"></i>
+		Корзина пуста
+	</span>
