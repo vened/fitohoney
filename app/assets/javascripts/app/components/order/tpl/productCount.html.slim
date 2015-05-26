@@ -1,0 +1,9 @@
+.product-show__buy-unit
+  .input-group
+    span.input-group-btn
+      button.btn.btn-primary type="button" ng-click="Dec()"
+        i.icon-minus
+    input.form-control.text-center type="text" ng-model="productModel.count" ng-blur="ProductCount()"
+    span.input-group-btn
+      button.btn.btn-primary type="button" ng-click="Inc()"
+        i.icon-plus

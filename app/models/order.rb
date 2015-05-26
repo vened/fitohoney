@@ -14,8 +14,8 @@ class Order
   field :updated_at, type: Time
 
   embeds_many :order_items
-  
-  
+
+
   ###########################################
   # предобработка объекта перед сохранением #
   ###########################################
@@ -25,15 +25,15 @@ class Order
   ######################################################
   # Добавление продукта в корзину и обновление корзины #
   ######################################################
-  def order_product_add(product_id, increment)
+  def order_product_add(product_id, increment, productMeasure, measurePrice)
     product = Product.find(product_id)
     if increment.to_f > 0
       increment = increment.to_f
     else
       increment = 1
     end
-    
-    product_price = (product.price * increment).round(2)
+
+    product_price = (measurePrice * increment).round(2)
     item = order_items.find_by(product_id: product_id)
     # Ищем переданный продукт в заказе
     if item.blank?
@@ -46,9 +46,10 @@ class Order
       order_items.create(product_id: product.id,
                          title: product.title,
                          price: product_price,
-                         origin_price: product_price,
+                         origin_price: measurePrice,
                          photo: product_photo,
-                         count: increment)
+                         count: increment,
+                         measure: productMeasure)
     else
       # если есть, увеличиваем кол-во данной позиции на increment
       item.count = increment
@@ -58,11 +59,11 @@ class Order
     update
   end
 
-  
+
   def count_items
     order_items.length
   end
-  
+
   def price
     order_items.sum(:price).round(2)
   end
@@ -72,7 +73,7 @@ class Order
     self.order_items.delete(product)
     update
   end
-  
+
   def status_human
     case self.status
       when 0
@@ -82,7 +83,7 @@ class Order
     end
   end
 
-  
+
   # сериализация корзины
   def cart
     {_id: self.id, count_items: self.count_items, price: self.price, order_items: self.order_items}

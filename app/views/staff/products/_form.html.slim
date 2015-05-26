@@ -22,29 +22,41 @@
   fieldset
     legend Варианты продажи
     .row
-      .col-md-6
+      .col-md-4
         .form-group
-          = f.label :measure_1, 'Вариант товара - 1'
+          = f.label :measure_1, 'Вариант товара - 1 вес кг'
           = f.text_field :measure_1, class: 'form-control'
-      .col-md-6
+      .col-md-4
+        .form-group
+          = f.label :measure_1_size, 'Вариант товара - 1 объем литры'
+          = f.text_field :measure_1_size, class: 'form-control'
+      .col-md-4
         .form-group
           = f.label :measure_1_price, 'Вариант товара - 1 цена'
           = f.text_field :measure_1_price, class: 'form-control'
     .row
-      .col-md-6
+      .col-md-4
         .form-group
-          = f.label :measure_2, 'Вариант товара - 2'
+          = f.label :measure_2, 'Вариант товара - 2 вес кг'
           = f.text_field :measure_2, class: 'form-control'
-      .col-md-6
+      .col-md-4
+        .form-group
+          = f.label :measure_2_size, 'Вариант товара - 2  объем литры'
+          = f.text_field :measure_2_size, class: 'form-control'
+      .col-md-4
         .form-group
           = f.label :measure_2_price, 'Вариант товара - 2 цена'
           = f.text_field :measure_2_price, class: 'form-control'
     .row
-      .col-md-6
+      .col-md-4
         .form-group
-          = f.label :measure_3, 'Вариант товара - 3'
+          = f.label :measure_3, 'Вариант товара - 3 вес кг'
           = f.text_field :measure_3, class: 'form-control'
-      .col-md-6
+      .col-md-4
+        .form-group
+          = f.label :measure_3_size, 'Вариант товара - 3  объем литры'
+          = f.text_field :measure_3_size, class: 'form-control'
+      .col-md-4
         .form-group
           = f.label :measure_3_price, 'Вариант товара - 3 цена'
           = f.text_field :measure_3_price, class: 'form-control'

@@ -101,13 +101,28 @@
     }
 }
 .product-price{
-    font-size: 20px;
-
-    input[type="radio"],
-    input[type="checkbox"]{
-        margin-top: 9px;
-    }
+    //font-size: 20px;
+	//
+    //input[type="radio"],
+    //input[type="checkbox"]{
+    //    margin-top: 9px;
+    //}
 }
 .product_description{
     margin: 30px 0 20px;
+}
+.product-show__buy-unit{
+	position: relative;
+	width: 125px;
+	
+	&:after{
+		content: 'шт';
+		position: absolute;
+		left: 108%;
+		top: 4px;
+		font-size: 18px;
+	}
+}
+.gray{
+	color: #999;
 }
