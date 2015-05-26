@@ -45,6 +45,7 @@ class Order
       # если продукта нет, добавляем новый
       order_items.create(product_id: product.id,
                          title: product.title,
+                         full_path: product.full_path,
                          price: product_price,
                          origin_price: measurePrice,
                          photo: product_photo,

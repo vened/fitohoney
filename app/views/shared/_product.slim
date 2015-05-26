@@ -5,8 +5,12 @@
     .title=product.title
   .product-cell__content
     .product-cell__price
-      =number_to_currency(product.price, locale: :ru)
-    .product-cell__properties
+      -if product.measure_1_price > 0
+        | от&nbsp;
+        =number_to_currency(product.measure_1_price, locale: :ru)
+      -else
+        =number_to_currency(product.price, locale: :ru)
+    /.product-cell__properties
       /dl.product-cell__property
         dt Страна:
         dd=product.properties.find_by(name: 'Страна').value
@@ -17,5 +21,6 @@
           | x
           =product.properties.find_by(name: 'Высота').value
       
-  .product-cell__footer
+  /.product-cell__footer
+    =link_to 'Подробнее', product.full_path, class: 'product_cell__image'
     .btn.btn-primary.btn-block ng-click="addOrder('#{product.id}', 1)" Купить

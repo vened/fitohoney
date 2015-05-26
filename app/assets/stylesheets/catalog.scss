@@ -36,7 +36,7 @@
 }
 .product_cell__title{
     display: block;
-    height: 41px;
+    height: 20px;
     line-height: 20px;
     margin: 0 0 10px;
     padding: 0 10px;
@@ -125,4 +125,22 @@
 }
 .gray{
 	color: #999;
+}
+.product-show__photos{
+
+}
+.product-show__photos-root{
+	position: relative;
+	display: block;
+	margin: 0 0 10px;
+	border: 2px solid $gray-border;
+
+	
+	.icon-picture{
+		padding: 30% 0;
+		background-color: $gray-bg;
+		font-size: 4em;
+		text-align: center;
+		color: $gray-light-1;
+	}
 }

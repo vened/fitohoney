@@ -13,6 +13,10 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 
 $orange: #fc6615;
 
+$gray-bg: #f5f5f5 !default;
+$gray-border: #e2e2e2 !default;
+
+
 $gray-darker: lighten(#000, 13.5%) !default;
 // #222
 $gray-dark: lighten(#000, 20%) !default;

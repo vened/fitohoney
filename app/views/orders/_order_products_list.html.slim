@@ -10,11 +10,11 @@
       tr ng-repeat="item in cartItems.order_items"
         td.col-md-2
           div style="width:130px"
-            a href="/products/{{item.product_id}}"
+            a href="{{item.full_path}}"
               img.img-responsive ng-src="{{item.photo}}"
         td.col-md-4
           h4
-            a href="/products/{{item.product_id}}"
+            a href="{{item.full_path}}"
               | {{item.title}}
         td.col-md-2.text-center
           strong.cart-price

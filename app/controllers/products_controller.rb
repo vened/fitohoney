@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
   def show
     # @category = Category.find_by(path: params[:category_path])
     @product = Product.find_by(path: params[:product_path])
-    @root_photo = @product.product_photos.first
     @order = Order.find_by(session_id: session[:session_id])
   end
 
