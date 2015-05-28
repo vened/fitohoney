@@ -40,8 +40,12 @@
           =@product.measure_1_size
           |л.
         | —
-        =@product.measure_1_price
-        | руб.
+        span.gray
+          |(
+          =number_to_currency(@product.measure_1_origin_price, locale: :ru)
+          |)
+        |&nbsp;
+        =number_to_currency(@product.measure_1_price, locale: :ru)
         
     -if @product.measure_2.present?
       p
@@ -52,9 +56,13 @@
           =@product.measure_2_size
           |л.
         | —
-        =@product.measure_2_price
-        | руб.
-        
+        span.gray
+          |(
+          =number_to_currency(@product.measure_2_origin_price, locale: :ru)
+          |)
+        |&nbsp;
+        =number_to_currency(@product.measure_2_price, locale: :ru)
+
     -if @product.measure_3.present?
       p
         b
@@ -64,9 +72,13 @@
           =@product.measure_3_size
           |л.
         | —
-        =@product.measure_3_price
-        | руб.
-        
+        span.gray
+          |(
+          =number_to_currency(@product.measure_3_origin_price, locale: :ru)
+          |)
+        |&nbsp;
+        =number_to_currency(@product.measure_3_price, locale: :ru)
+
     dl
       dt Описание 
       dd= raw @product.description

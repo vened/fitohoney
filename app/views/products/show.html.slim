@@ -39,6 +39,10 @@
 
       .product-price
 
+        dl.product-price-sale
+          dt Скидка:
+          dd=number_to_percentage(@product.sale, precision: 0)
+            
         -if @product.measure_1 > 0
           .radio:label
             input[
@@ -55,6 +59,12 @@
               |&nbsp;≈&nbsp;
               =@product.measure_1
               =@product.unit
+            span.product-variant-price
+              span.gray-line
+                |(
+                =number_to_currency(@product.measure_1_origin_price, locale: :ru)
+                |)
+              =number_to_currency(@product.measure_1_price, locale: :ru)  
 
         -if @product.measure_2 > 0
           .radio:label
@@ -70,6 +80,13 @@
               |&nbsp;≈&nbsp;
               =@product.measure_2
               =@product.unit
+            span.product-variant-price
+              span.gray-line
+                |(
+                =number_to_currency(@product.measure_2_origin_price, locale: :ru)
+                |)
+              =number_to_currency(@product.measure_2_price, locale: :ru)
+
 
         -if @product.measure_3 > 0
           .radio:label
@@ -85,33 +102,43 @@
               |&nbsp;≈&nbsp;
               =@product.measure_3
               =@product.unit
-
-
-      product-count product-data="productVariant" product-model="product"
-
-      -if @product.price
-        dl.product-property.price itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"
-          dt Итого:
-          dd ng-if="!productVariant" 
-            -if @product.measure_3 > 0 && @product.measure_2 > 0 && @product.measure_1 > 0
+            span.product-variant-price
+              span.gray-line
+                |(
+                =number_to_currency(@product.measure_3_origin_price, locale: :ru)
+                |)
               =number_to_currency(@product.measure_3_price, locale: :ru)
-              meta itemprop="price" content="#{@product.measure_3_price}"
-            -if @product.measure_3 == 0 && @product.measure_2 > 0 && @product.measure_1 > 0
-              =number_to_currency(@product.measure_2_price, locale: :ru)
-              meta itemprop="price" content="#{@product.measure_2_price}"
-            -if @product.measure_3 == 0 && @product.measure_2 == 0 && @product.measure_1 > 0
-              =number_to_currency(@product.measure_1_price, locale: :ru)
-              meta itemprop="price" content="#{@product.measure_1_price}"
-            -if @product.measure_3 == 0 && @product.measure_2 == 0 && @product.measure_1 == 0
-              =number_to_currency(@product.price, locale: :ru)
-              meta itemprop="price" content="#{@product.price}"
 
-          noindex
-            dd ng-if="product"
-              | {{ product.count}} шт., на сумму {{ product.price | price}} руб.
 
-          meta itemprop="priceCurrency" content="RUB"
+      .product-count-price.clearfix
+      
+        product-count product-data="productVariant" product-model="product"
+
+        -if @product.price
+          .product-property-price itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"
+            div ng-if="!productVariant" 
+              -if @product.measure_3 > 0 && @product.measure_2 > 0 && @product.measure_1 > 0
+                =number_to_currency(@product.measure_3_price, locale: :ru)
+                meta itemprop="price" content="#{@product.measure_3_price}"
+              -if @product.measure_3 == 0 && @product.measure_2 > 0 && @product.measure_1 > 0
+                =number_to_currency(@product.measure_2_price, locale: :ru)
+                meta itemprop="price" content="#{@product.measure_2_price}"
+              -if @product.measure_3 == 0 && @product.measure_2 == 0 && @product.measure_1 > 0
+                =number_to_currency(@product.measure_1_price, locale: :ru)
+                meta itemprop="price" content="#{@product.measure_1_price}"
+              -if @product.measure_3 == 0 && @product.measure_2 == 0 && @product.measure_1 == 0
+                =number_to_currency(@product.price, locale: :ru)
+                meta itemprop="price" content="#{@product.price}"
+  
+            noindex
+              div ng-if="product"
+                | шт., на сумму {{ product.price | price}} руб.
+  
+            meta itemprop="priceCurrency" content="RUB"
       noindex
-        |{{product}}
-        .btn.btn-success.btn-lg ng-click="addOrder('#{@product.id}', product.count, product.measure, product.measure_size, product.origin_price)" В корзину
-      .product_description itemprop="description"=@product.description
+        .btn.btn-success.btn-lg ng-click="addOrder('#{@product.id}', product.count, product.measure, product.measure_size, product.origin_price)" Добавить в корзину
+      
+      -if @product.description.present?
+        .product_description itemprop="description"
+          h4 Описание товара
+          =@product.description

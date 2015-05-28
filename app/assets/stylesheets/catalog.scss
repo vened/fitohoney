@@ -100,31 +100,38 @@
 
     }
 }
+
 .product-price{
-    //font-size: 20px;
-	//
-    //input[type="radio"],
-    //input[type="checkbox"]{
-    //    margin-top: 9px;
-    //}
+    margin: 0 0 15px;
+    border-bottom: 1px solid $cell-border-color;
 }
 .product_description{
     margin: 30px 0 20px;
 }
+.product-count-price{
+    margin: 0 0 25px;
+}
 .product-show__buy-unit{
+    float: left;
 	position: relative;
-	width: 125px;
-	
-	&:after{
-		content: 'шт';
-		position: absolute;
-		left: 108%;
-		top: 4px;
-		font-size: 18px;
-	}
+	width: 115px;
+    margin-right: 10px;
+}
+.product-property-price{
+    float: left;
+    margin-top: 2px;
+    font-size: 20px;
 }
 .gray{
 	color: #999;
+}
+.gray-line{
+    margin: 0 10px 0 0;
+    text-decoration: line-through;
+    color: #999;
+}
+.product-variant-price{
+    margin: 0 0 0 15px;
 }
 .product-show__photos{
 
@@ -143,4 +150,12 @@
 		text-align: center;
 		color: $gray-light-1;
 	}
+}
+.product-price-sale{
+    dt, dd{
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+        color: orangered;
+    }
 }

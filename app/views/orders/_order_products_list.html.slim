@@ -28,13 +28,13 @@
         td.col-md-2.text-center
           .btn-group.btn-group-justified
             .btn-group
-              .btn.btn-primary ng-click="addOrder(item.product_id, item.count - 1)"
+              .btn.btn-primary ng-click="addOrder(item.product_id, item.count - 1, item.measure, item.measure_size, item.origin_price)"
                 i.icon-minus
             .btn-group
               .btn.btn-default.disabled
                 | {{item.count}}
             .btn-group
-              .btn.btn-primary ng-click="addOrder(item.product_id, item.count + 1)"
+              .btn.btn-primary ng-click="addOrder(item.product_id, item.count + 1, item.measure, item.measure_size, item.origin_price)"
                 i.icon-plus
           br
           .btn.btn-danger.btn-sm ng-click="productDestroy(item._id.$oid, item.product_id)" Убрать из корзины
