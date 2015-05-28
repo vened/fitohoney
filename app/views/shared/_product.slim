@@ -1,4 +1,7 @@
 .product_cell
+  .product_cell-sale
+    | Распродажа, скидка:&nbsp;
+    =number_to_percentage(product.sale, precision: 0)
   =link_to product.full_path, class: 'product_cell__image' do
     =image_tag product.product_photos.first.photo.thumb, class: 'image'
   =link_to product.full_path, class: 'product_cell__title'
@@ -7,6 +10,7 @@
     .product-cell__price
       -if product.measure_1_price > 0
         | от&nbsp;
+        .product-cell__price-old=product.measure_1_origin_price
         =number_to_currency(product.measure_1_price, locale: :ru)
       -else
         =number_to_currency(product.price, locale: :ru)

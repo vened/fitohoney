@@ -11,6 +11,10 @@
   .row.product-page.photo-gallery itemscope="" itemtype="http://schema.org/Product"
 
     .col-md-5.product-show__photos
+      -if @product.sale > 0
+        .product-show__photos-sale
+          | Распродажа, скидка:&nbsp;
+          =number_to_percentage(@product.sale, precision: 0)
       -if @product.product_photos
         -@product.product_photos.each_with_index do |photo, index|
           a [
@@ -39,9 +43,10 @@
 
       .product-price
 
-        dl.product-price-sale
-          dt Скидка:
-          dd=number_to_percentage(@product.sale, precision: 0)
+        -if @product.sale > 0
+          dl.product-price-sale
+            dt Распродажа, скидка:
+            dd=number_to_percentage(@product.sale, precision: 0)
             
         -if @product.measure_1 > 0
           .radio:label
@@ -60,11 +65,13 @@
               =@product.measure_1
               =@product.unit
             span.product-variant-price
-              span.gray-line
-                |(
-                =number_to_currency(@product.measure_1_origin_price, locale: :ru)
-                |)
+              -if @product.sale > 0
+                span.gray-line
+                  |(
+                  =number_to_currency(@product.measure_1_origin_price, locale: :ru)
+                  |)
               =number_to_currency(@product.measure_1_price, locale: :ru)  
+
 
         -if @product.measure_2 > 0
           .radio:label
@@ -81,10 +88,11 @@
               =@product.measure_2
               =@product.unit
             span.product-variant-price
-              span.gray-line
-                |(
-                =number_to_currency(@product.measure_2_origin_price, locale: :ru)
-                |)
+              -if @product.sale > 0
+                span.gray-line
+                  |(
+                  =number_to_currency(@product.measure_2_origin_price, locale: :ru)
+                  |)
               =number_to_currency(@product.measure_2_price, locale: :ru)
 
 
@@ -103,10 +111,11 @@
               =@product.measure_3
               =@product.unit
             span.product-variant-price
-              span.gray-line
-                |(
-                =number_to_currency(@product.measure_3_origin_price, locale: :ru)
-                |)
+              -if @product.sale > 0
+                span.gray-line
+                  |(
+                  =number_to_currency(@product.measure_3_origin_price, locale: :ru)
+                  |)
               =number_to_currency(@product.measure_3_price, locale: :ru)
 
 
