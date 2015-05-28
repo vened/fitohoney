@@ -16,6 +16,10 @@
           h4
             a href="{{item.full_path}}"
               | {{item.title}}
+          div ng-if="item.unit == 'кг.'"
+            | {{item.measure_size}} л.
+            span.gray
+              |&nbsp;≈&nbsp;{{item.measure}} {{item.unit}}
         td.col-md-2.text-center
           strong.cart-price
             | {{item.origin_price}}

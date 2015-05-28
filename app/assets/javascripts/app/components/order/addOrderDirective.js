@@ -15,6 +15,7 @@ appComponents.directive('productCount', function ($templateCache) {
 			
 			$scope.$watch('productData', function(data){
 				$scope.productModel.measure = data.measure;
+				$scope.productModel.measure_size = data.measure_size;
 				$scope.productModel.origin_price = data.price; 
 				$scope.productModel.total = data.measure * $scope.productModel.count;
 				$scope.productModel.price = data.price * $scope.productModel.count;

@@ -45,8 +45,8 @@
               type="radio"
               name="measure"
               ng-model="productVariant"
-              ng-value="{photo: 0, measure: #{@product.measure_1}, price: #{@product.measure_1_price}}"
-              ng-init="productVariant = {photo: 0, measure: #{@product.measure_1}, price: #{@product.measure_1_price}}"
+              ng-value="{photo: 0, measure: #{@product.measure_1}, measure_size: #{@product.measure_1_size}, price: #{@product.measure_1_price}}"
+              ng-init="productVariant = {photo: 0, measure: #{@product.measure_1}, measure_size: #{@product.measure_1_size}, price: #{@product.measure_1_price}}"
               ng-checked="true"
               ]
             =@product.measure_1_size
@@ -62,7 +62,7 @@
               type="radio"
               name="measure"
               ng-model="productVariant"
-              ng-value="{photo: 1, measure: #{@product.measure_2}, price: #{@product.measure_2_price}}"
+              ng-value="{photo: 1, measure: #{@product.measure_2}, measure_size: #{@product.measure_2_size}, price: #{@product.measure_2_price}}"
               ]
             =@product.measure_2_size
             | л.
@@ -77,7 +77,7 @@
               type="radio"
               name="measure"
               ng-model="productVariant"
-              ng-value="{photo: 2, measure: #{@product.measure_3}, price: #{@product.measure_3_price}}"
+              ng-value="{photo: 2, measure: #{@product.measure_3}, measure_size: #{@product.measure_3_size}, price: #{@product.measure_3_price}}"
               ]
             =@product.measure_3_size
             | л.
@@ -112,5 +112,6 @@
 
           meta itemprop="priceCurrency" content="RUB"
       noindex
-        .btn.btn-success.btn-lg ng-click="addOrder('#{@product.id}', product.count, product.measure, product.origin_price)" В корзину
+        |{{product}}
+        .btn.btn-success.btn-lg ng-click="addOrder('#{@product.id}', product.count, product.measure, product.measure_size, product.origin_price)" В корзину
       .product_description itemprop="description"=@product.description

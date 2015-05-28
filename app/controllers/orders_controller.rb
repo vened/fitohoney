@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 
 
   def create
-    @order.order_product_add(order_params[:product_id], order_params[:count], order_params[:measure], order_params[:origin_price])
+    @order.order_product_add(order_params[:product_id], order_params[:count], order_params[:measure], order_params[:measure_size], order_params[:origin_price])
     render :json => @order.cart
   end
 
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:product_id, :email, :address, :count, :measure, :origin_price, :phone, :name)
+    params.require(:order).permit(:product_id, :email, :address, :count, :measure, :measure_size, :origin_price, :phone, :name)
   end
 
 
