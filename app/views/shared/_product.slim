@@ -1,7 +1,8 @@
 .product_cell
-  .product_cell-sale
-    | Распродажа, скидка:&nbsp;
-    =number_to_percentage(product.sale, precision: 0)
+  -if product.sale > 0
+    .product_cell-sale
+      | Распродажа, скидка:&nbsp;
+      =number_to_percentage(product.sale, precision: 0)
   =link_to product.full_path, class: 'product_cell__image' do
     =image_tag product.product_photos.first.photo.thumb, class: 'image'
   =link_to product.full_path, class: 'product_cell__title'
