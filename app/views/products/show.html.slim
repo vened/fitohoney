@@ -37,7 +37,7 @@
               =image_tag photo.photo.thumb, class: "img-responsive"
 
 
-    .col-md-7
+    .col-md-4
 
       h1 itemprop="name"= @product.title
 
@@ -151,3 +151,8 @@
         .product_description itemprop="description"
           h4 Описание товара
           =@product.description
+          
+    
+    
+    .col-md-3
+      = render 'shared/delivery'

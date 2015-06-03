@@ -17,6 +17,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           =link_to 'Доставка и оплата', delivery_path
         li class=(request.fullpath == feedbacks_path ? 'active' : '')
           =link_to 'Отзывы', feedbacks_path
+        li class=(request.fullpath == contacts_path ? 'active' : '')
+          =link_to 'Контакты', contacts_path
         li class=(request.fullpath == '/catalog' ? 'active' : '')
           =link_to 'Наши продукты', '/catalog'
 

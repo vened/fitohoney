@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/about' => 'pages#about'
   get '/delivery' => 'pages#delivery'
+  get '/contacts' => 'pages#contacts'
   get '/sitemap' => 'pages#sitemap'
 
 

@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   end
   def delivery
   end
+  def contacts
+  end
 
 
   def sitemap

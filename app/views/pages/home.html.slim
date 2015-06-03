@@ -31,8 +31,9 @@
       h3 Получаем вкуснейший мёд
 
 .block.yellow:.container
-  h3 Доставка и оплата:
-  = render 'shared/delivery'
+  h2.page-header.text-center Популярные товары
+  = render_cell :products, :popular
+  /= render 'shared/delivery'
 
 
 = render_cell :feedbacks, :show
