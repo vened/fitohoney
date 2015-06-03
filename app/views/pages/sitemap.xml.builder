@@ -18,6 +18,7 @@ xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") do
 
   xml.url do
     xml.loc @url
+    xml.lastmod '2015-06-03'
     xml.priority 0.8
   end
   
