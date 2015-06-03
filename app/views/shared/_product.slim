@@ -11,7 +11,8 @@
     .product-cell__price
       -if product.measure_1_price > 0
         | от&nbsp;
-        .product-cell__price-old=product.measure_1_origin_price
+        -if product.sale > 0
+          .product-cell__price-old=product.measure_1_origin_price
         =number_to_currency(product.measure_1_price, locale: :ru)
       -else
         =number_to_currency(product.price, locale: :ru)
