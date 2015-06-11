@@ -21,6 +21,7 @@ html lang="en"
       script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
 
     = csrf_meta_tags
+    link href="/feed" rel="alternate" title="RSS feed" type="application/rss+xml"
   body.application-ng ng-controller="OrderController"
     = render_cell :header, :show
     

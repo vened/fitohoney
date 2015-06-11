@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get '/delivery' => 'pages#delivery'
   get '/contacts' => 'pages#contacts'
   get '/sitemap' => 'pages#sitemap'
+  
+  # rss
+  get "/feed", :to => "posts#feed", format: 'rss'
 
 
   resources :feedbacks, only: [:index, :show]

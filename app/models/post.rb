@@ -12,6 +12,7 @@ class Post
 
   mount_uploader :photo, ProductPhotosUploader
 
+  before_save :create_path
 
 
   def create_path

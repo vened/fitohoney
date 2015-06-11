@@ -10,6 +10,13 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 
+
+###### social ######
+gem 'social_poster', path: '/Users/max/RubymineProjects/social_poster'
+
+# gem 'vkontakte_api'
+
+
 ###### localisation ######
 gem 'rails-i18n'
 gem 'devise-i18n'

@@ -1,21 +1,32 @@
+require 'open-uri'
 class Staff::PostsController < Staff::StaffController
   skip_before_action :verify_authenticity_token
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_post_path
 
+
   def index
     @posts = Post.all
+    # SocialPoster.write(:vk, 'Something that srfsfr', attachments: 'photo4949016_301611453', owner_id: '-95972715')
+    SocialPoster.write(:vk,
+                       'Something that srfsfr',
+                       nil,
+                       owner_id: '-95972715')
   end
+
 
   def show
   end
+
 
   def new
     @post = Post.new
   end
 
+
   def edit
   end
+
 
   def create
     @post = Post.new(post_params)
@@ -27,6 +38,7 @@ class Staff::PostsController < Staff::StaffController
       end
     end
   end
+
 
   def update
     respond_to do |format|
@@ -46,13 +58,18 @@ class Staff::PostsController < Staff::StaffController
     end
   end
 
+
   private
   def post_params
     params.require(:post).permit(:title, :prev, :body, :photo)
   end
+
+
   def set_post
     @post = Post.find(params[:id])
   end
+
+
   def set_post_path
     @posts_path = true
   end
