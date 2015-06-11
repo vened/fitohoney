@@ -4,7 +4,7 @@ SocialPoster.setup do |config|
   # }
 
   config.vk = {
-      access_token: 'c587ff4cf22ff772422080ee9e22d33e7d6089b91acd7baae36f419bdbddf33532e724f2d5178194ee83e'
+      access_token: ''
   }
 
   # config.twitter = {
