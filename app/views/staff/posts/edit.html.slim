@@ -1,0 +1,8 @@
+-content_for :title do
+  | Редактирование 
+  | —
+  =@post.title
+-content_for :action do
+  = link_to 'Назад', staff_post_path, class: 'btn btn-default'
+
+= render 'form'

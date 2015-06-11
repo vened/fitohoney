@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'dashboard/show', path: '/'
     resources :brands
     resources :feedbacks
+    resources :posts
     resources :categories
     resources :carousels
     resources :orders do
