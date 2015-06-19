@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :categories
     resources :carousels
+    get 'orders/success' => 'orders#success'
     resources :orders do
       delete 'cart_item_delete/:item_id' => 'orders#cart_item_delete', as: 'item_delete'
     end

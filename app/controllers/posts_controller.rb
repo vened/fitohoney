@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
   def index
-    @posts = Post.asc(:updated_at).page(params[:page])
+    @posts = Post.desc(:updated_at).page(params[:page])
   end
   
   def show

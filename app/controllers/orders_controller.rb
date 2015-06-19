@@ -8,7 +8,12 @@ class OrdersController < ApplicationController
 
 
   def mini_cart
-    render :json => @order.cart
+    if @order.present?
+      @cart = @order.cart
+    else
+      @cart = nil
+    end
+    render :json => @cart
   end
 
 

@@ -14,7 +14,7 @@ class Post
 
   before_save :create_path
   
-  paginates_per 2
+  paginates_per 10
 
   def create_path
     self.path = self.title.parameterize
