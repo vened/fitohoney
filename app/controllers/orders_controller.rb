@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
 
 
   def create
+    if @order.blank?
+      @order = Order.create(session_id: session[:session_id])
+    end
     @order.order_product_add(order_params[:product_id], order_params[:count], order_params[:measure], order_params[:measure_size], order_params[:origin_price])
     render :json => @order.cart
   end
@@ -43,8 +46,8 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find_by(session_id: session[:session_id])
-    if @order.blank?
-      @order = Order.create(session_id: session[:session_id])
-    end
+    # if @order.blank?
+    #   @order = Order.create(session_id: session[:session_id])
+    # end
   end
 end
