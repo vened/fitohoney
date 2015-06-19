@@ -8,10 +8,7 @@ class Staff::PostsController < Staff::StaffController
   def index
     @posts = Post.all
     # SocialPoster.write(:vk, 'Something that srfsfr', attachments: 'photo4949016_301611453', owner_id: '-95972715')
-    SocialPoster.write(:vk,
-                       'Something that srfsfr',
-                       nil,
-                       owner_id: '-95972715')
+    # SocialPoster.write(:vk, 'Something that srfsfr', nil, owner_id: '-95972715')
   end
 
 

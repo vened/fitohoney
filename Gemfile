@@ -9,6 +9,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
+gem 'kaminari'
 
 
 ###### social ######

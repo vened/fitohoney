@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   end
 
 
+  resources :posts, :only => [:index, :show]
+
   # pages
   root 'pages#home'
   get '/about' => 'pages#about'

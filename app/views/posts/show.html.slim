@@ -1,0 +1,16 @@
+- content_for :title do
+  |#{@post.title} - Блог о медё - магазин мёда fitohoney
+
+- content_for :breadcrumb do
+  ol.breadcrumb
+    li= link_to 'Главная', root_path
+    li= link_to 'Блог о мёде', posts_path
+    li.active=@post.title
+
+.container.content-page
+  h1.page-header=@post.title
+  =link_to @post.photo.url, style: 'width: 300px', class: 'thumbnail pull-left', target: '_blank' do
+    =image_tag @post.photo.large, class: 'media-object img-responsive', alt: @post.title
+  = raw @post.body
+  .media-shared Рассказать друзьям в социальных сетях:
+  = render partial: 'shared/social_btn'

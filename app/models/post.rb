@@ -13,17 +13,11 @@ class Post
   mount_uploader :photo, ProductPhotosUploader
 
   before_save :create_path
-
+  
+  paginates_per 2
 
   def create_path
-    prepare_title               = self.title.gsub(/\s/, "-")
-    prepare_title               = prepare_title.gsub(/[*]/, "x")
-    prepare_title               = prepare_title.gsub(/\,/, "")
-    prepare_title               = prepare_title.gsub(/\./, "")
-    prepare_title               = prepare_title.gsub(/\!/, "")
-    transliterate_prepare_title = I18n.transliterate(prepare_title).downcase
-    self.path                   = transliterate_prepare_title
+    self.path = self.title.parameterize
   end
-
 
 end

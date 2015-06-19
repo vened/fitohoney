@@ -12,7 +12,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav
         li class=(request.fullpath == about_path ? 'active' : '')
-          =link_to 'О магазине', about_path
+          =link_to 'О нас', about_path
         li class=(request.fullpath == delivery_path ? 'active' : '')
           =link_to 'Доставка и оплата', delivery_path
         li class=(request.fullpath == feedbacks_path ? 'active' : '')
@@ -20,7 +20,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         li class=(request.fullpath == contacts_path ? 'active' : '')
           =link_to 'Контакты', contacts_path
         li class=(request.fullpath == '/catalog' ? 'active' : '')
-          =link_to 'Наши продукты', '/catalog'
+          =link_to 'Магазин', '/catalog'
+        li class=(request.fullpath == posts_path ? 'active' : '')
+          =link_to 'Блог', posts_path
 
 
       noindex
