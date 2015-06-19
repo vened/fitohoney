@@ -13,7 +13,7 @@ gem 'kaminari'
 
 
 ###### social ######
-gem 'social_poster', path: '/Users/max/RubymineProjects/social_poster'
+# gem 'social_poster', path: '/Users/max/RubymineProjects/social_poster'
 
 # gem 'vkontakte_api'
 
