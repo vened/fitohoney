@@ -13,7 +13,9 @@ table.table.table-striped.table-bordered
   tbody
     - @posts.each do |item|
       tr
-        td=image_tag item.photo.thumb, class: "img-responsive"
+        td
+          span.thumbnail style="width: 150px"
+            =image_tag item.photo.thumb, class: "img-responsive"
         td
           = item.title
           = raw item.prev

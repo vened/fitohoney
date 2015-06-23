@@ -17,9 +17,9 @@
             =image_tag item.photo.thumb, class: 'media-object img-responsive', alt: item.title
       .media-body
         h2.media-title
-          =link_to item.title, post_path(item)
+          =link_to item.title, posts_path+'/'+item.path
         .media-date=item.updated_at.strftime("%Y-%m-%d")
         =item.prev
         |&nbsp;
-        =link_to 'подробнее', post_path(item)
+        =link_to 'подробнее', posts_path+'/'+item.path
   = paginate @posts

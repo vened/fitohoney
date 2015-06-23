@@ -13,5 +13,6 @@ class PagesController < ApplicationController
     @url        = "http://fitohoney.ru"
     @products = Product.all
     @feedbacks = Feedback.all
+    @posts = Post.all
   end
 end
