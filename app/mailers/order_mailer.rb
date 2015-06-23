@@ -7,7 +7,7 @@ class OrderMailer < ApplicationMailer
       attachments[item.photo] = File.read(Rails.root.to_s + "/public#{item.photo}")
     end
 
-    mail(to: 'maxstbn@yandex.ru', subject: "Новый заказ #{@order.number} на сайте fitohoney.ru")
+    mail(to: 'maxstbn@yandex.ru, levunova@mail.ru', subject: "Новый заказ #{@order.number} на сайте fitohoney.ru")
   end
 
   def confirm_order(order)

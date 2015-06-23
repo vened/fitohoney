@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "order@santemax.ru"
+  default from: "info@fitohoney.ru"
   layout 'mailer'
 end
