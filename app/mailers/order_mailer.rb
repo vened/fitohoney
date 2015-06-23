@@ -16,8 +16,8 @@ class OrderMailer < ApplicationMailer
     @order.order_items.each do | item |
       attachments[item.photo] = File.read(Rails.root.to_s + "/public#{item.photo}")
     end
-
-    mail(to: @order.email, subject: 'Вы успешно оформили заказа на сайте santemax.ru')
+    attachments['logo.png'] = File.read(Rails.root.to_s + "/public/content/logo.png")
+    mail(to: @order.email, subject: 'Вы успешно оформили заказа на сайте fitohoney.ru')
   end
 
 end

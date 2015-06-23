@@ -30,45 +30,26 @@ table [
               =item[:title]
 
           div style="margin: 8px 0"
-            |Артикул:
             b
-              =item[:article]
-
-          div style="margin: 8px 0"
-            |Категория: 
-            a [
-              href="http://santemax.ru/catalog/#{item[:category_path]}"
-              style="color: #0073D3"
-              ]
-              =item[:category]
-
-          div style="margin: 8px 0"
-            |Бренд: 
-            a [
-              href="http://santemax.ru/products/brand/#{item[:brand_path]}"
-              style="color: #0073D3"
-              ]
-              =item[:brand]
-
-          div style="margin: 8px 0"
-            |Единица измерения: 
-            b
+              =item[:measure]
               =item[:unit]
 
 
         td align="center" style="padding: 10px;border: 1px solid #ddd"
-          =item[:product_price_origin]
+          =number_to_currency(item[:origin_price], locale: :ru)
           |/
+          =item[:measure]
+          =item[:unit]
+          
+        td align="center" style="padding: 10px;border: 1px solid #ddd"
+          =item[:count]
           =item[:unit]
         td align="center" style="padding: 10px;border: 1px solid #ddd"
-          =item[:product_count]
-          =item[:unit]
-        td align="center" style="padding: 10px;border: 1px solid #ddd"
-          b=item[:item_price]
+          b=item[:price]
     
     tr
       td colspan="5" align="right" style="padding: 10px;border: 1px solid #ddd"
         div style="font-size: 20px"
           |Общая сумма заказа: 
           b
-            =order.price
+            =number_to_currency(order.price, locale: :ru)

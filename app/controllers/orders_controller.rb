@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       OrderMailer.new_order(@order).deliver_now
       OrderMailer.confirm_order(@order).deliver_now
-      # reset_session
+      reset_session
       render :json => {success: "Заказ успешно оформлен! Наш менеджер скоро свяжется с вами."}
     else
       render :json => {error: "Что то пошло не так:("}
