@@ -6,6 +6,9 @@ class FeedbacksController < ApplicationController
   end
 
   def show
+    unless @feedback.present?
+      render template: 'errors/404', status: 404
+    end
   end
 
 
