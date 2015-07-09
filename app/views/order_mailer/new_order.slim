@@ -1,11 +1,26 @@
-h2 style="font-weight: normal" 
-  | Новый заказ №
-  = @order.id
+h2 style="margin: 0 0 20px; font-size: 24px; font-weight: normal" 
+  | Fitohoney.ru новый заказ #
+  = @order.number
+
+div style="margin: 15px 0;font-size: 18px"
+  |Сумма заказа:&nbsp;
+  b=number_to_currency(@order.price, locale: :ru)
+
+div style="margin: 10px 0;font-size: 13px"
+  |Имя:&nbsp;
+  b=@order.name
+
+div style="margin: 10px 0;font-size: 13px"
+  |Телефон:&nbsp;
+  b=@order.phone
+
+div style="margin: 10px 0;font-size: 13px"
+  |Email:&nbsp;
+  b=@order.email
+
+div style="margin: 10px 0 20px;font-size: 13px"
+  |Адрес доставки:&nbsp;
+  b=@order.address
 
 
-table style="border: 1px solid #333"
-  tbody
-    -@order.order_items.each do |item|
-      tr
-        td style="padding: 8px; border: 1px solid #333"=item.title
-        td style="padding: 8px; border: 1px solid #333"=image_tag attachments[item.photo].url  
+= render partial: "order_mailer/items", locals: { order: @order }

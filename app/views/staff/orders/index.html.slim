@@ -1,13 +1,12 @@
 -content_for :title do
   | Заказы
+-content_for :action do
+  =link_to 'Выполненые заказы', staff_orders_success_path, class: 'btn btn-primary'
 
 
 .panel.panel-primary
   .panel-heading
     .panel-title Не обработанные
-  = render partial: "staff/orders/orders", locals: {orders: @orders_new}
+  = render partial: "staff/orders/orders", locals: {orders: @orders}
 
-.panel.panel-success
-  .panel-heading
-    .panel-title Выполнены
-  = render partial: "staff/orders/orders", locals: {orders: @orders_success}  
+= paginate @orders

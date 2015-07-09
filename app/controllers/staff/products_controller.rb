@@ -62,7 +62,8 @@ class Staff::ProductsController < Staff::StaffController
   def product_params
     params.require(:product).permit(:product_id, :title, :description, :price, :price_origin, :sale, :unit, :measure,
                                     :measure_1, :measure_1_price, :measure_2, :measure_2_price, :measure_3, :measure_3_price,
-                                    :measure_1_size, :measure_2_size, :measure_3_size
+                                    :measure_1_size, :measure_2_size, :measure_3_size,
+                                    :measure_1_origin_price, :measure_2_origin_price, :measure_3_origin_price
     )
   end
 end

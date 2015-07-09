@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     get 'dashboard/show', path: '/'
     resources :brands
     resources :feedbacks
+    resources :posts
     resources :categories
     resources :carousels
+    get 'orders/success' => 'orders#success'
     resources :orders do
       delete 'cart_item_delete/:item_id' => 'orders#cart_item_delete', as: 'item_delete'
     end
@@ -32,11 +34,17 @@ Rails.application.routes.draw do
   end
 
 
+  resources :posts, :only => [:index, :show]
+
   # pages
   root 'pages#home'
   get '/about' => 'pages#about'
   get '/delivery' => 'pages#delivery'
+  get '/contacts' => 'pages#contacts'
   get '/sitemap' => 'pages#sitemap'
+  
+  # rss
+  get "/feed", :to => "posts#feed", format: 'rss'
 
 
   resources :feedbacks, only: [:index, :show]

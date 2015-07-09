@@ -1,0 +1,20 @@
+-content_for :title do
+  =@post.title
+-content_for :action do
+  = link_to 'Назад', staff_posts_path, class: 'btn btn-default'
+  | &nbsp;
+  = link_to 'Редактировать', edit_staff_post_path(@post), class: 'btn btn-success'
+  = link_to staff_feedback_path(@post), data: {:confirm => 'Вы уверенны?'}, :method => :delete, class: 'btn btn-danger' do
+    .fa.fa-trash
+
+.row
+  .col-md-3=image_tag @post.photo.large, class: "img-responsive"
+  .col-md-8
+    h2 первью публикации
+    hr
+    = raw @post.prev
+    hr
+    h2 основной текст публикации
+    hr
+    = raw @post.body
+    hr

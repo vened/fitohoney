@@ -21,11 +21,12 @@ class Order
   ###########################################
   before_save :order_number_increment
 
+  paginates_per 10
 
   ######################################################
   # Добавление продукта в корзину и обновление корзины #
   ######################################################
-  def order_product_add(product_id, increment, productMeasure, measurePrice)
+  def order_product_add(product_id, increment, productMeasure, productMeasureSize, measurePrice)
     product = Product.find(product_id)
     if increment.to_f > 0
       increment = increment.to_f
@@ -48,6 +49,8 @@ class Order
                          full_path: product.full_path,
                          price: product_price,
                          origin_price: measurePrice,
+                         unit: product.unit,
+                         measure_size: productMeasureSize,
                          photo: product_photo,
                          count: increment,
                          measure: productMeasure)

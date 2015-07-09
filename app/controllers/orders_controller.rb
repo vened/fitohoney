@@ -8,12 +8,20 @@ class OrdersController < ApplicationController
 
 
   def mini_cart
-    render :json => @order.cart
+    if @order.present?
+      @cart = @order.cart
+    else
+      @cart = nil
+    end
+    render :json => @cart
   end
 
 
   def create
-    @order.order_product_add(order_params[:product_id], order_params[:count], order_params[:measure], order_params[:origin_price])
+    if @order.blank?
+      @order = Order.create(session_id: session[:session_id])
+    end
+    @order.order_product_add(order_params[:product_id], order_params[:count], order_params[:measure], order_params[:measure_size], order_params[:origin_price])
     render :json => @order.cart
   end
 
@@ -37,14 +45,14 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:product_id, :email, :address, :count, :measure, :origin_price, :phone, :name)
+    params.require(:order).permit(:product_id, :email, :address, :count, :measure, :measure_size, :origin_price, :phone, :name)
   end
 
 
   def set_order
     @order = Order.find_by(session_id: session[:session_id])
-    if @order.blank?
-      @order = Order.create(session_id: session[:session_id])
-    end
+    # if @order.blank?
+    #   @order = Order.create(session_id: session[:session_id])
+    # end
   end
 end

@@ -12,6 +12,10 @@ class ProductsController < ApplicationController
     # @category = Category.find_by(path: params[:category_path])
     @product = Product.find_by(path: params[:product_path])
     @order = Order.find_by(session_id: session[:session_id])
+
+    unless @product.present?
+      render template: 'errors/404', status: 404
+    end
   end
 
 

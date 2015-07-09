@@ -17,7 +17,23 @@ xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") do
 
 
   xml.url do
+    xml.loc posts_url
+    xml.priority 1
+  end
+
+
+  @posts.each do |item|
+    xml.url do
+      xml.loc posts_url+'/'+item.path
+      xml.lastmod item.updated_at.strftime("%Y-%m-%d")
+      xml.priority 1
+    end
+  end
+  
+
+  xml.url do
     xml.loc @url
+    xml.lastmod '2015-06-23'
     xml.priority 0.8
   end
   
@@ -31,7 +47,7 @@ xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") do
     xml.url do
       xml.loc @url + '/feedbacks/' + item.id
       xml.lastmod item.updated_at.strftime("%Y-%m-%d")
-      xml.priority 0.7
+      xml.priority 0.9
     end
   end
 
@@ -44,6 +60,5 @@ xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") do
     xml.loc @url + '/delivery'
     xml.priority 0.7
   end
-
 
 end

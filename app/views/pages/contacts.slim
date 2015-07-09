@@ -1,0 +1,24 @@
+- content_for :title do
+  | Контакты
+
+- content_for :breadcrumb do
+  ol.breadcrumb
+    li= link_to 'Главная', root_path
+    li.active Контакты
+
+.container.content-page
+  h1.page-header Контакты
+  
+  dl.dl-horizontal
+    dt Телефон:
+    dd 8 (495) 109-00-19
+  dl.dl-horizontal
+    dt Email:
+    dd
+      a href="mailto:support@fitohoney.ru" support@fitohoney.ru
+  dl.dl-horizontal
+    dt ИП:
+    dd Левунова В.Ю.
+  dl.dl-horizontal
+    dt ОГРНИП:
+    dd 313500115600014

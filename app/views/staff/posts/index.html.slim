@@ -1,0 +1,30 @@
+-content_for :title do
+  | Публикации
+-content_for :action do
+  = link_to 'Добавить новую Публикацию', new_staff_post_path, class: 'btn btn-success'
+
+
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th Фото
+      th Текст
+      th Действия
+  tbody
+    - @posts.each do |item|
+      tr
+        td
+          span.thumbnail style="width: 150px"
+            =image_tag item.photo.thumb, class: "img-responsive"
+        td
+          = item.title
+          = raw item.prev
+        td.text-nowrap
+          = link_to staff_post_path(item), class: 'btn btn-info btn-sm' do
+            .fa.fa-info
+          = link_to edit_staff_post_path(item), class: 'btn btn-success btn-sm' do
+            .fa.fa-edit
+          = link_to staff_post_path(item), data: { :confirm => 'Вы уверенны?' }, :method => :delete, class: 'btn btn-danger btn-sm' do
+            .fa.fa-trash
+
+= paginate @posts

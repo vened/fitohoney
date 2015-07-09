@@ -1,0 +1,55 @@
+table [
+  width="100%"
+  bgcolor="#fff"
+  cellpadding="0"
+  cellspacing="0"
+  style="margin: 10px 0;border-collapse:collapse;font-family: 'Arial', 'sans-serif';font-size: 13px"
+  ]
+
+  thead
+    tr
+      th style="padding: 10px;background-color: #F5F5F5;border: 1px solid #ddd" Фото
+      th style="padding: 10px;background-color: #F5F5F5;border: 1px solid #ddd" Товар
+      th style="padding: 10px;background-color: #F5F5F5;border: 1px solid #ddd" Цена
+      th style="padding: 10px;background-color: #F5F5F5;border: 1px solid #ddd" Кол-во
+      th style="padding: 10px;background-color: #F5F5F5;border: 1px solid #ddd" Сумма
+  tbody
+    -order.order_items.each do |item|
+      tr
+        td width="120px" align="center" style="padding: 10px;border: 1px solid #ddd"
+          -if item[:photo].present?
+            a href="http://santemax.ru/#{item[:photo]}"
+              =image_tag attachments[item[:photo]].url, style: "width: 120px"
+
+        td style="padding: 10px;border: 1px solid #ddd"
+          h2 style="margin: 0 0 10px 0; font-size: 18px; font-weight: normal"
+            a [
+              href="http://santemax.ru/#{item[:full_path]}"
+              style="color: #0073D3"
+              ]
+              =item[:title]
+
+          div style="margin: 8px 0"
+            b
+              =item[:measure]
+              =item[:unit]
+
+
+        td align="center" style="padding: 10px;border: 1px solid #ddd"
+          =number_to_currency(item[:origin_price], locale: :ru)
+          |/
+          =item[:measure]
+          =item[:unit]
+          
+        td align="center" style="padding: 10px;border: 1px solid #ddd"
+          =item[:count]
+          =item[:unit]
+        td align="center" style="padding: 10px;border: 1px solid #ddd"
+          b=item[:price]
+    
+    tr
+      td colspan="5" align="right" style="padding: 10px;border: 1px solid #ddd"
+        div style="font-size: 20px"
+          |Общая сумма заказа: 
+          b
+            =number_to_currency(order.price, locale: :ru)

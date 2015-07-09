@@ -1,17 +1,17 @@
 - content_for :title do
-  | Отзывы о нашем магазине меда - у нас можно купить натуральный мед
+  | Отзывы о нашем магазине мёда - у нас можно купить натуральный мёд
   |&nbsp;|&nbsp;
   =@feedback.title
 
 - content_for :breadcrumb do
   ol.breadcrumb
     li= link_to 'Главная', root_path
-    li= link_to 'Отзывы о нашем магазине меда', feedbacks_path
+    li= link_to 'Отзывы о нашем магазине мёда', feedbacks_path
     li.active=@feedback.title
 
 .container.content-page
   h1.page-header 
-    | Отзывы о нашем магазине меда
+    | Отзывы о нашем магазине мёда
     |&nbsp;—&nbsp;
     =@feedback.title 
   .row style="margin-bottom: 50px"

@@ -1,0 +1,25 @@
+- content_for :title do
+  |Блог о медё - магазин мёда fitohoney
+
+- content_for :breadcrumb do
+  ol.breadcrumb
+    li= link_to 'Главная', root_path
+    li.active Блог о мёде
+
+.container.content-page
+  h1.page-header Блог о мёде
+
+  -@posts.each do |item|
+    .media
+      -if item.photo.present?
+        .media-left
+          =link_to posts_path+'/'+item.path, style: 'width: 113px', class: 'thumbnail' do
+            =image_tag item.photo.thumb, class: 'media-object img-responsive', alt: item.title
+      .media-body
+        h2.media-title
+          =link_to item.title, posts_path+'/'+item.path
+        .media-date=item.updated_at.strftime("%Y-%m-%d")
+        =item.prev
+        |&nbsp;
+        =link_to 'подробнее', posts_path+'/'+item.path
+  = paginate @posts

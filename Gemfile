@@ -9,6 +9,14 @@ gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
+gem 'kaminari'
+
+
+###### social ######
+# gem 'social_poster', path: '/Users/max/RubymineProjects/social_poster'
+
+# gem 'vkontakte_api'
+
 
 ###### localisation ######
 gem 'rails-i18n'

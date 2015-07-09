@@ -19,12 +19,15 @@ class Product
   # модификации товара
   field :measure_1, type: Float, default: 0.0 # минимальный объем покупки модификации
   field :measure_1_size, type: Float, default: 0.0
+  field :measure_1_origin_price, type: Float, default: 0.0
   field :measure_1_price, type: Float, default: 0.0
   field :measure_2, type: Float, default: 0.0 # минимальный объем покупки модификации
   field :measure_2_size, type: Float, default: 0.0
+  field :measure_2_origin_price, type: Float, default: 0.0
   field :measure_2_price, type: Float, default: 0.0
   field :measure_3, type: Float, default: 0.0 # минимальный объем покупки модификации
   field :measure_3_size, type: Float, default: 0.0
+  field :measure_3_origin_price, type: Float, default: 0.0
   field :measure_3_price, type: Float, default: 0.0
 
 
@@ -82,19 +85,19 @@ class Product
     self.price.round(2)
 
     if measure_1 > 0
-      self.measure_1_price = self.measure_1_price * (100 - sale)/100
+      self.measure_1_price = self.measure_1_origin_price * (100 - sale)/100
       self.measure_1_price.round(2)
     else
       self.measure_1_price = 0
     end
     if measure_2 > 0
-      self.measure_2_price = self.measure_2_price * (100 - sale)/100
+      self.measure_2_price = self.measure_2_origin_price * (100 - sale)/100
       self.measure_2_price.round(2)
     else
       self.measure_2_price = 0
     end
     if measure_3 > 0
-      self.measure_3_price = self.measure_3_price * (100 - sale)/100
+      self.measure_3_price = self.measure_3_origin_price * (100 - sale)/100
       self.measure_3_price.round(2)
     else
       self.measure_3_price = 0

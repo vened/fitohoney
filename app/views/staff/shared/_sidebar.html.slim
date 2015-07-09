@@ -30,12 +30,21 @@
     -else
       li
         =link_to 'Бренды', staff_brands_path
+        
     -if @feedbacks_path.present?
       li.active
         =link_to 'Отзывы', staff_feedbacks_path
     -else
       li
         =link_to 'Отзывы', staff_feedbacks_path
+
+    -if @posts_path.present?
+      li.active
+        =link_to 'Публикации', staff_posts_path
+    -else
+      li
+        =link_to 'Публикации', staff_posts_path
+
     -if @carousel_path.present?
       li.active
         =link_to 'Карусель', staff_carousels_path

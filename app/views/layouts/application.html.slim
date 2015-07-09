@@ -11,8 +11,11 @@ html lang="en"
     meta name="description" content=""
 
     = render 'shared/counters'
-    
-    
+
+    -if request.fullpath != '/'
+      base href="#{request.fullpath}/"
+
+
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     /! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -21,6 +24,7 @@ html lang="en"
       script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
 
     = csrf_meta_tags
+    link href="/feed" rel="alternate" title="RSS feed" type="application/rss+xml"
   body.application-ng ng-controller="OrderController"
     = render_cell :header, :show
     
