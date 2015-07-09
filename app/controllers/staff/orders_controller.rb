@@ -4,7 +4,7 @@ class Staff::OrdersController < Staff::StaffController
   before_action :set_order_path, only: [:index, :show, :new, :edit, :update, :destroy]
 
   def index
-    @orders = Order.where(status: 0).desc(:created_at).page(params[:page])
+    @orders = Order.where(status: 0).desc(:updated_at).page(params[:page])
   end
   
   def success

@@ -8,6 +8,7 @@ class OrderMailer < ApplicationMailer
     end
 
     mail(to: 'maxstbn@yandex.ru, levunova@mail.ru', subject: "Новый заказ #{@order.number} на сайте fitohoney.ru")
+    # mail(to: 'maxstbn@yandex.ru', subject: "Новый заказ #{@order.number} на сайте fitohoney.ru")
   end
 
   def confirm_order(order)
